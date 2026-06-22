@@ -89,38 +89,11 @@
       animation: arrive 700ms cubic-bezier(.2, .8, .2, 1) both;
     }
 
-    .mark {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 11px;
-      margin-bottom: 13px;
-      color: var(--amber);
-    }
-
-    .mark::before,
-    .mark::after {
-      content: "";
-      width: 34px;
-      height: 1px;
-      background: currentColor;
-      opacity: 0.55;
-    }
-
-    .brand {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(3.35rem, 18vw, 4.55rem);
-      font-weight: 600;
-      line-height: 0.9;
-      letter-spacing: -0.045em;
-    }
-
-    .descriptor {
-      color: var(--soft);
-      font-size: 0.66rem;
-      font-weight: 500;
-      letter-spacing: 0.31em;
-      text-transform: uppercase;
+    .logo {
+      width: 200px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
 
     .divider {
@@ -244,9 +217,7 @@
 <body>
   <main class="page">
     <section class="selector" aria-labelledby="language-heading">
-      <div class="mark" aria-hidden="true">✦</div>
-      <div class="brand">AKÇA</div>
-      <div class="descriptor">Kitchen &amp; Café</div>
+      <img class="logo" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café — Fresh Daily, Brewed Perfectly">
 
       <div class="divider" aria-hidden="true"></div>
 
