@@ -27,6 +27,7 @@
         radial-gradient(circle at 50% -8%, rgba(199, 109, 42, 0.18), transparent 20rem),
         var(--cream);
       padding: max(28px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+      animation: pageFade 360ms ease-out both;
     }
 
     .page {
@@ -123,6 +124,15 @@
       letter-spacing: 0.12em;
       text-decoration: none;
       text-transform: uppercase;
+    }
+
+    @keyframes pageFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body { animation: none; }
     }
   </style>
 </head>

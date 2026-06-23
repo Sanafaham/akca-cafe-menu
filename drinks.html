@@ -27,6 +27,7 @@
       background:
         radial-gradient(circle at 50% -8%, rgba(199, 109, 42, 0.16), transparent 26rem),
         var(--cream);
+      animation: pageFade 360ms ease-out both;
     }
 
     .page {
@@ -115,6 +116,15 @@
       font-size: 0.56rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
+    }
+
+    @keyframes pageFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body { animation: none; }
     }
   </style>
 </head>

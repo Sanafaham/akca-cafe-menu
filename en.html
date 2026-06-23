@@ -26,6 +26,7 @@ body{
   margin:0 auto;
   min-height:100vh;
   padding-bottom:max(88px, calc(env(safe-area-inset-bottom) + 72px));
+  animation:pageFade 360ms ease-out both;
 }
 
 /* ── HEADER ── */
@@ -56,22 +57,39 @@ body{
 .nav{
   position:sticky;top:0;z-index:100;
   background:var(--charcoal);
-  display:flex;overflow-x:auto;
-  scrollbar-width:none;padding:0 4px;
+  display:flex;flex-wrap:wrap;justify-content:center;
+  overflow-x:visible;
+  scrollbar-width:none;padding:6px 6px 0;
   border-bottom:2px solid var(--amber);
+  box-shadow:0 10px 24px rgba(26,22,20,.12);
 }
 .nav::-webkit-scrollbar{display:none;}
 .nav a{
-  flex:0 0 auto;padding:14px 16px;
+  flex:0 0 auto;padding:11px 10px 10px;
   color:rgba(255,255,255,0.55);
   text-decoration:none;
   font-size:10px;letter-spacing:1.5px;
   font-weight:500;text-transform:uppercase;
-  white-space:nowrap;transition:color .2s;
+  white-space:nowrap;
+  transition:color .22s ease,border-color .22s ease,text-shadow .22s ease,background-color .22s ease;
   border-bottom:2px solid transparent;
   margin-bottom:-2px;
+  border-radius:12px 12px 0 0;
+  min-width:0;
 }
-.nav a.active, .nav a:hover{color:#fff;border-bottom-color:var(--amber);}
+.nav a.active{
+  color:#fff;
+  border-bottom-color:var(--amber);
+  background:rgba(199,109,42,.08);
+  text-shadow:0 0 10px rgba(232,145,74,.48);
+}
+.nav a:hover{color:#fff;}
+
+@media (max-width:430px){
+  .nav a{font-size:9px;letter-spacing:.9px;padding-inline:6px;overflow:hidden;text-overflow:clip;}
+  .nav a:nth-child(-n+3){flex:1 1 33.333%;text-align:center;}
+  .nav a:nth-child(n+4){flex:1 1 50%;text-align:center;}
+}
 
 /* ── SECTION ── */
 .section{padding:32px 16px 8px;}
@@ -202,6 +220,11 @@ body{
 
 /* ── SCROLL OFFSET for sticky nav ── */
 .anchor{scroll-margin-top:52px;}
+@keyframes pageFade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+@media (prefers-reduced-motion:reduce){
+  body{animation:none;}
+  .nav a{transition:none;}
+}
 </style>
 </head>
 <body>
