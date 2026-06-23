@@ -12,54 +12,46 @@
     :root {
       --amber: #c76d2a;
       --cream: #f5efe9;
-      --cream-dark: #ede5dc;
       --charcoal: #1a1614;
       --soft: #8a7e76;
       --white: #fffdfb;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      background: var(--cream);
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--cream); }
 
     body {
       min-height: 100vh;
       color: var(--charcoal);
       font-family: "DM Sans", sans-serif;
       background:
-        radial-gradient(circle at 50% -8%, rgba(199, 109, 42, 0.16), transparent 28rem),
+        radial-gradient(circle at 50% -8%, rgba(199, 109, 42, 0.16), transparent 26rem),
         var(--cream);
     }
 
     .page {
-      width: min(100%, 760px);
+      width: min(100%, 560px);
       margin: 0 auto;
-      padding: max(22px, env(safe-area-inset-top)) 14px max(32px, env(safe-area-inset-bottom));
+      padding: max(18px, env(safe-area-inset-top)) 10px max(28px, env(safe-area-inset-bottom));
     }
 
     .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
+      gap: 14px;
+      margin: 0 4px 14px;
     }
 
     .brand {
-      width: 128px;
+      width: 124px;
       height: auto;
       display: block;
     }
 
     .home-link {
       color: var(--charcoal);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 500;
       letter-spacing: 0.12em;
       text-decoration: none;
@@ -72,32 +64,12 @@
       color: var(--amber);
     }
 
-    .heading {
-      margin: 8px 0 18px;
-      text-align: center;
-    }
-
-    h1 {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(1.8rem, 8vw, 2.5rem);
-      font-weight: 600;
-      line-height: 1;
-    }
-
-    .heading p {
-      margin-top: 7px;
-      color: var(--amber);
-      font-size: 0.75rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
     .menu-frame {
       overflow: hidden;
       background: var(--white);
-      border: 1px solid rgba(199, 109, 42, 0.28);
+      border: 1px solid rgba(199, 109, 42, 0.24);
       border-radius: 18px;
-      box-shadow: 0 20px 55px rgba(62, 39, 24, 0.14);
+      box-shadow: 0 18px 48px rgba(62, 39, 24, 0.12);
     }
 
     .menu-frame img {
@@ -110,11 +82,11 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-top: 18px;
+      margin: 16px 4px 0;
     }
 
     .button {
-      min-height: 48px;
+      min-height: 46px;
       padding: 12px 10px;
       display: grid;
       place-items: center;
@@ -123,8 +95,9 @@
       border: 1px solid var(--charcoal);
       text-align: center;
       text-decoration: none;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 500;
+      letter-spacing: 0.02em;
     }
 
     .button:last-child {
@@ -140,42 +113,31 @@
     }
 
     .footer {
-      padding-top: 24px;
+      padding-top: 20px;
       color: var(--soft);
       text-align: center;
-      font-size: 0.58rem;
+      font-size: 0.56rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-    }
-
-    @media (max-width: 360px) {
-      .actions {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
 <body>
   <main class="page">
     <div class="topbar">
-      <a href="./index.html" aria-label="Return to language selection">
+      <a href="./category-en.html" aria-label="Return to menu categories">
         <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
       </a>
-      <a class="home-link" href="./index.html">Main Menu</a>
+      <a class="home-link" href="./category-en.html">Categories</a>
     </div>
 
-    <header class="heading">
-      <h1>Pizza Menu</h1>
-      <p lang="tr">Pizza Menüsü</p>
-    </header>
-
     <figure class="menu-frame">
-      <img src="./akca-pizza-menu.png" alt="AKÇA bilingual pizza menu with pizza choices, ingredients, prices, and build-your-own options">
+      <img src="./akca-pizza-mobile-menu.png" alt="AKÇA bilingual mobile pizza menu with pizza selections, ingredients, and prices">
     </figure>
 
-    <nav class="actions" aria-label="Return to menu by language">
-      <a class="button" href="./en.html" lang="en">Back to English Menu</a>
-      <a class="button" href="./tr.html" lang="tr">Türkçe Menüye Dön</a>
+    <nav class="actions" aria-label="Pizza menu navigation">
+      <a class="button" href="./category-en.html">English Categories</a>
+      <a class="button" href="./category-tr.html" lang="tr">Türkçe Kategoriler</a>
     </nav>
 
     <footer class="footer">AKÇA Kitchen &amp; Café · Fresh Daily</footer>

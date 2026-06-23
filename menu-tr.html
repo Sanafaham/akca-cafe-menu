@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5efe9">
+  <title>AKÇA Kitchen &amp; Café — Ana Menü</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --amber: #c76d2a;
+      --cream: #f5efe9;
+      --charcoal: #1a1614;
+      --soft: #8a7e76;
+      --white: #fffdfb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100svh;
+      color: var(--charcoal);
+      font-family: "DM Sans", sans-serif;
+      background:
+        radial-gradient(circle at 50% -8%, rgba(199, 109, 42, 0.18), transparent 20rem),
+        var(--cream);
+      padding: max(28px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+    }
+
+    .page {
+      width: min(100%, 430px);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .brand {
+      width: min(74vw, 260px);
+      height: auto;
+      display: block;
+      margin: 0 auto 24px;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2.5rem, 13vw, 3.7rem);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: var(--soft);
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .links {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .link-card {
+      min-height: 72px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--charcoal);
+      background: rgba(255, 253, 251, 0.78);
+      border: 1px solid rgba(199, 109, 42, 0.7);
+      border-radius: 18px;
+      box-shadow: 0 16px 36px rgba(62, 39, 24, 0.1);
+      text-decoration: none;
+    }
+
+    .link-card strong {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .link-card span {
+      color: var(--amber);
+      font-family: Georgia, serif;
+      font-size: 2rem;
+    }
+
+    .footer-link {
+      display: block;
+      width: fit-content;
+      margin: 22px auto 0;
+      color: var(--soft);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+    <h1>Ana Menü</h1>
+    <p class="subtitle">Menü bölümünü seçin</p>
+
+    <nav class="links" aria-label="Ana menü bölümleri">
+      <a class="link-card" href="./tr.html"><strong>Kaseler</strong><span aria-hidden="true">›</span></a>
+      <a class="link-card" href="./pizza.html"><strong>Pizzalar</strong><span aria-hidden="true">›</span></a>
+      <a class="link-card" href="./drinks.html"><strong>İçecekler</strong><span aria-hidden="true">›</span></a>
+      <a class="link-card" href="./dessert.html"><strong>Tatlı</strong><span aria-hidden="true">›</span></a>
+    </nav>
+
+    <a class="footer-link" href="./category-tr.html">Kategorilere dön</a>
+  </main>
+</body>
+</html>

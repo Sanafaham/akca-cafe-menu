@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5efe9">
+  <title>AKÇA Kitchen &amp; Café — Menu Categories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --amber: #c76d2a;
+      --cream: #f5efe9;
+      --cream-dark: #ede5dc;
+      --charcoal: #1a1614;
+      --soft: #8a7e76;
+      --white: #fffdfb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { background: var(--cream); }
+
+    body {
+      min-height: 100svh;
+      color: var(--charcoal);
+      font-family: "DM Sans", sans-serif;
+      background:
+        radial-gradient(circle at 50% -8%, rgba(199, 109, 42, 0.17), transparent 18rem),
+        linear-gradient(180deg, #fbf8f4 0%, var(--cream) 54%, #f1e8df 100%);
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: max(34px, env(safe-area-inset-top)) 16px max(30px, env(safe-area-inset-bottom));
+    }
+
+    .brand {
+      display: block;
+      width: min(76vw, 330px);
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .tagline {
+      margin-top: 14px;
+      color: var(--amber);
+      font-size: clamp(0.66rem, 2.3vw, 0.82rem);
+      font-weight: 500;
+      letter-spacing: 0.38em;
+      text-align: center;
+    }
+
+    .rule {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      margin: 32px auto 24px;
+      color: var(--amber);
+    }
+
+    .rule::before,
+    .rule::after {
+      content: "";
+      height: 1px;
+      background: rgba(199, 109, 42, 0.6);
+    }
+
+    .leaf {
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .category-card {
+      min-height: 120px;
+      padding: 18px 14px;
+      display: grid;
+      grid-template-columns: auto 1px 1fr auto;
+      align-items: center;
+      gap: 16px;
+      color: var(--charcoal);
+      background: rgba(255, 253, 251, 0.74);
+      border: 1px solid var(--amber);
+      border-radius: 20px;
+      box-shadow: 0 18px 40px rgba(62, 39, 24, 0.12);
+      text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .category-card.featured {
+      grid-column: 1 / -1;
+      min-height: 142px;
+      padding-inline: 20px;
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      color: var(--amber);
+      border: 1px solid var(--amber);
+      border-radius: 50%;
+    }
+
+    .icon svg {
+      width: 35px;
+      height: 35px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .split {
+      width: 1px;
+      height: 58px;
+      background: rgba(199, 109, 42, 0.56);
+    }
+
+    .title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2.1rem, 9vw, 4rem);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .arrow {
+      color: var(--amber);
+      font-family: Georgia, serif;
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .category-card:hover,
+    .category-card:focus-visible {
+      background: var(--white);
+      box-shadow: 0 22px 48px rgba(62, 39, 24, 0.16);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .category-card:focus-visible {
+      box-shadow: 0 0 0 4px rgba(199, 109, 42, 0.24), 0 22px 48px rgba(62, 39, 24, 0.16);
+    }
+
+    .footer-link {
+      display: block;
+      width: fit-content;
+      margin: 22px auto 0;
+      color: var(--soft);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 520px) {
+      .category-card,
+      .category-card.featured {
+        min-height: 92px;
+        padding: 12px;
+        border-radius: 18px;
+        grid-template-columns: 46px 1px 1fr auto;
+        gap: 8px;
+      }
+      .icon { width: 46px; height: 46px; }
+      .icon svg { width: 26px; height: 26px; }
+      .split { height: 48px; }
+      .title { font-size: 1.55rem; }
+      .arrow { font-size: 1.9rem; }
+    }
+
+    @media (max-width: 359px) {
+      .grid { grid-template-columns: 1fr; }
+      .title { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+    <p class="tagline" lang="en">FRESH DAILY · BREWED PERFECTLY</p>
+
+    <div class="rule" aria-hidden="true"><span class="leaf">🍁</span></div>
+
+    <nav class="grid" aria-label="AKÇA menu categories">
+      <a class="category-card featured" href="./menu-en.html">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M8 25h24"/><path d="M11 25c0-8 5-14 9-14s9 6 9 14"/><path d="M20 11V7"/><path d="M18 7h4"/><path d="M7 29h26"/></svg></span>
+        <span class="split" aria-hidden="true"></span>
+        <span class="title">Menu</span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a class="category-card" href="./en.html">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M8 20h24c-1 8-5 12-12 12S9 28 8 20Z"/><path d="M13 17c-2-4 0-7 4-8"/><path d="M20 17c-2-4 0-7 4-8"/><path d="M27 17c-2-4 0-7 4-8"/></svg></span>
+        <span class="split" aria-hidden="true"></span>
+        <span class="title">Bowls</span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a class="category-card" href="./pizza.html">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M10 31 30 10c2 7 0 15-5 20-4 4-10 5-15 1Z"/><path d="M16 25h.1"/><path d="M22 20h.1"/><path d="M25 27h.1"/></svg></span>
+        <span class="split" aria-hidden="true"></span>
+        <span class="title">Pizzas</span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a class="category-card" href="./drinks.html">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M14 12h13l-2 20H16L14 12Z"/><path d="M13 12h15"/><path d="M20 12V7l5-2"/></svg></span>
+        <span class="split" aria-hidden="true"></span>
+        <span class="title">Drinks</span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a class="category-card" href="./dessert.html">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M9 27h22"/><path d="M11 20h18v7H11z"/><path d="M13 16h14l2 4H11l2-4Z"/><path d="M20 16v-4"/><circle cx="20" cy="10" r="3"/></svg></span>
+        <span class="split" aria-hidden="true"></span>
+        <span class="title">Dessert</span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+    </nav>
+
+    <a class="footer-link" href="./index.html">Change language</a>
+  </main>
+</body>
+</html>

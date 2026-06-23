@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5efe9">
+  <title>AKÇA Kitchen &amp; Café — Dessert</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --amber: #c76d2a;
+      --cream: #f5efe9;
+      --charcoal: #1a1614;
+      --soft: #8a7e76;
+      --white: #fffdfb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100svh;
+      color: var(--charcoal);
+      font-family: "DM Sans", sans-serif;
+      background:
+        radial-gradient(circle at 50% -8%, rgba(199, 109, 42, 0.18), transparent 20rem),
+        var(--cream);
+      display: grid;
+      place-items: center;
+      padding: max(28px, env(safe-area-inset-top)) 18px max(28px, env(safe-area-inset-bottom));
+    }
+
+    .card {
+      width: min(100%, 430px);
+      padding: 36px 24px 28px;
+      background: rgba(255, 253, 251, 0.78);
+      border: 1px solid rgba(199, 109, 42, 0.32);
+      border-radius: 22px;
+      box-shadow: 0 24px 60px rgba(62, 39, 24, 0.13);
+      text-align: center;
+    }
+
+    .brand {
+      width: min(72vw, 240px);
+      height: auto;
+      display: block;
+      margin: 0 auto 28px;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2.3rem, 11vw, 3.4rem);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .tr {
+      margin-top: 8px;
+      color: var(--amber);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.35rem;
+      font-style: italic;
+    }
+
+    .note {
+      margin: 22px auto 0;
+      max-width: 24rem;
+      color: var(--soft);
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .button {
+      min-height: 48px;
+      padding: 12px 10px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--charcoal);
+      border: 1px solid var(--charcoal);
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.74rem;
+      font-weight: 500;
+    }
+
+    .button:last-child {
+      color: var(--charcoal);
+      background: transparent;
+      border-color: rgba(26, 22, 20, 0.35);
+    }
+
+    .button:focus-visible {
+      outline: 3px solid rgba(199, 109, 42, 0.3);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+    <h1>Dessert Coming Soon</h1>
+    <p class="tr" lang="tr">Tatlı menüsü yakında</p>
+    <p class="note">Dessert details are being prepared. Please choose another menu category for now.</p>
+    <nav class="actions" aria-label="Dessert page navigation">
+      <a class="button" href="./category-en.html">English Categories</a>
+      <a class="button" href="./category-tr.html" lang="tr">Türkçe Kategoriler</a>
+    </nav>
+  </main>
+</body>
+</html>
