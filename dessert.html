@@ -19,6 +19,8 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html { background: var(--cream); }
+
     body {
       min-height: 100svh;
       color: var(--charcoal);
@@ -26,13 +28,50 @@
       background:
         radial-gradient(circle at 50% -8%, rgba(199, 109, 42, 0.18), transparent 20rem),
         var(--cream);
-      display: grid;
-      place-items: center;
-      padding: max(28px, env(safe-area-inset-top)) 18px max(28px, env(safe-area-inset-bottom));
+    }
+
+    .page {
+      width: min(100%, 560px);
+      min-height: 100svh;
+      margin: 0 auto;
+      padding: max(18px, env(safe-area-inset-top)) 10px max(32px, env(safe-area-inset-bottom));
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 0 4px 14px;
+    }
+
+    .topbar .brand {
+      width: 124px;
+      height: auto;
+      display: block;
+      margin: 0;
+    }
+
+    .home-link {
+      color: var(--charcoal);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .home-link::before {
+      content: "←";
+      margin-right: 7px;
+      color: var(--amber);
     }
 
     .card {
       width: min(100%, 430px);
+      margin: auto;
       padding: 36px 24px 28px;
       background: rgba(255, 253, 251, 0.78);
       border: 1px solid rgba(199, 109, 42, 0.32);
@@ -98,22 +137,32 @@
       border-color: rgba(26, 22, 20, 0.35);
     }
 
-    .button:focus-visible {
+    .button:focus-visible,
+    .home-link:focus-visible {
       outline: 3px solid rgba(199, 109, 42, 0.3);
       outline-offset: 3px;
     }
   </style>
 </head>
 <body>
-  <main class="card">
-    <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
-    <h1>Dessert Coming Soon</h1>
-    <p class="tr" lang="tr">Tatlı menüsü yakında</p>
-    <p class="note">Dessert details are being prepared. Please choose another menu category for now.</p>
-    <nav class="actions" aria-label="Dessert page navigation">
-      <a class="button" href="./category-en.html">English Categories</a>
-      <a class="button" href="./category-tr.html" lang="tr">Türkçe Kategoriler</a>
-    </nav>
+  <main class="page">
+    <div class="topbar">
+      <a href="./category-en.html" aria-label="Return to menu categories">
+        <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+      </a>
+      <a class="home-link" href="./category-en.html">Categories</a>
+    </div>
+
+    <section class="card">
+      <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+      <h1>Dessert Coming Soon</h1>
+      <p class="tr" lang="tr">Tatlı menüsü yakında</p>
+      <p class="note">Dessert details are being prepared. Please choose another menu category for now.</p>
+      <nav class="actions" aria-label="Dessert page navigation">
+        <a class="button" href="./category-en.html">English Categories</a>
+        <a class="button" href="./category-tr.html" lang="tr">Türkçe Kategoriler</a>
+      </nav>
+    </section>
   </main>
 </body>
 </html>
