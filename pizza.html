@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5efe9">
+  <title>AKÇA Kitchen &amp; Café — Pizza Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --amber: #c76d2a;
+      --cream: #f5efe9;
+      --cream-dark: #ede5dc;
+      --charcoal: #1a1614;
+      --soft: #8a7e76;
+      --white: #fffdfb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background: var(--cream);
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--charcoal);
+      font-family: "DM Sans", sans-serif;
+      background:
+        radial-gradient(circle at 50% -8%, rgba(199, 109, 42, 0.16), transparent 28rem),
+        var(--cream);
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: max(22px, env(safe-area-inset-top)) 14px max(32px, env(safe-area-inset-bottom));
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      width: 128px;
+      height: auto;
+      display: block;
+    }
+
+    .home-link {
+      color: var(--charcoal);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .home-link::before {
+      content: "←";
+      margin-right: 7px;
+      color: var(--amber);
+    }
+
+    .heading {
+      margin: 8px 0 18px;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.8rem, 8vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .heading p {
+      margin-top: 7px;
+      color: var(--amber);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .menu-frame {
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid rgba(199, 109, 42, 0.28);
+      border-radius: 18px;
+      box-shadow: 0 20px 55px rgba(62, 39, 24, 0.14);
+    }
+
+    .menu-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .button {
+      min-height: 48px;
+      padding: 12px 10px;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--charcoal);
+      border: 1px solid var(--charcoal);
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .button:last-child {
+      color: var(--charcoal);
+      background: transparent;
+      border-color: rgba(26, 22, 20, 0.35);
+    }
+
+    .button:focus-visible,
+    .home-link:focus-visible {
+      outline: 3px solid rgba(199, 109, 42, 0.3);
+      outline-offset: 3px;
+    }
+
+    .footer {
+      padding-top: 24px;
+      color: var(--soft);
+      text-align: center;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 360px) {
+      .actions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <a href="./index.html" aria-label="Return to language selection">
+        <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+      </a>
+      <a class="home-link" href="./index.html">Main Menu</a>
+    </div>
+
+    <header class="heading">
+      <h1>Pizza Menu</h1>
+      <p lang="tr">Pizza Menüsü</p>
+    </header>
+
+    <figure class="menu-frame">
+      <img src="./akca-pizza-menu.png" alt="AKÇA bilingual pizza menu with pizza choices, ingredients, prices, and build-your-own options">
+    </figure>
+
+    <nav class="actions" aria-label="Return to menu by language">
+      <a class="button" href="./en.html" lang="en">Back to English Menu</a>
+      <a class="button" href="./tr.html" lang="tr">Türkçe Menüye Dön</a>
+    </nav>
+
+    <footer class="footer">AKÇA Kitchen &amp; Café · Fresh Daily</footer>
+  </main>
+</body>
+</html>
