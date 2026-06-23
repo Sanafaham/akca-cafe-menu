@@ -65,23 +65,36 @@ body{
 }
 .nav::-webkit-scrollbar{display:none;}
 .nav a{
+  position:relative;
   flex:0 0 auto;padding:11px 10px 10px;
   color:rgba(255,255,255,0.55);
   text-decoration:none;
   font-size:10px;letter-spacing:1.5px;
   font-weight:500;text-transform:uppercase;
   white-space:nowrap;
-  transition:color .22s ease,border-color .22s ease,text-shadow .22s ease,background-color .22s ease;
-  border-bottom:2px solid transparent;
-  margin-bottom:-2px;
+  transition:color .22s ease,text-shadow .22s ease,background-color .22s ease;
   border-radius:12px 12px 0 0;
   min-width:0;
 }
+.nav a::after{
+  content:"";
+  position:absolute;
+  left:10px;
+  right:10px;
+  bottom:0;
+  height:2px;
+  border-radius:999px;
+  background:transparent;
+  transition:background-color .22s ease,box-shadow .22s ease;
+}
 .nav a.active{
   color:#fff;
-  border-bottom-color:var(--amber);
   background:rgba(199,109,42,.08);
   text-shadow:0 0 10px rgba(232,145,74,.48);
+}
+.nav a.active::after{
+  background:var(--amber);
+  box-shadow:0 0 10px rgba(232,145,74,.48);
 }
 .nav a:hover{color:#fff;}
 
@@ -427,6 +440,13 @@ function showSection(id){
 
 links.forEach(link => {
   const href = link.getAttribute('href');
+  if(href === './pizza.html'){
+    link.addEventListener('click', () => {
+      links.forEach(navLink => navLink.classList.remove('active'));
+      link.classList.add('active');
+    });
+    return;
+  }
   if(!href || !href.startsWith('#')) return;
   link.addEventListener('click', event => {
     event.preventDefault();
