@@ -157,10 +157,10 @@
 <body>
   <main class="page">
     <div class="topbar">
-      <a href="./category-en.html" aria-label="Return to menu categories">
+      <a data-main-link href="./category-en.html" aria-label="Return to main menu">
         <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
       </a>
-      <a class="home-link" href="./category-en.html">Categories</a>
+      <a class="home-link" data-main-link href="./category-en.html">Main Menu</a>
     </div>
 
     <section class="card">
@@ -169,10 +169,19 @@
       <p class="tr" lang="tr">Tatlı menüsü yakında</p>
       <p class="note">Dessert details are being prepared. Please choose another menu category for now.</p>
       <nav class="actions" aria-label="Dessert page navigation">
-        <a class="button" href="./category-en.html">English Categories</a>
-        <a class="button" href="./category-tr.html" lang="tr">Türkçe Kategoriler</a>
+        <a class="button" href="./category-en.html">English Main Menu</a>
+        <a class="button" href="./category-tr.html" lang="tr">Türkçe Ana Menü</a>
       </nav>
     </section>
   </main>
+  <script>
+    const lang = new URLSearchParams(window.location.search).get('lang');
+    const mainMenuHref = lang === 'tr' ? './category-tr.html' : './category-en.html';
+    const mainMenuText = lang === 'tr' ? 'Ana Menü' : 'Main Menu';
+    document.querySelectorAll('[data-main-link]').forEach(link => {
+      link.setAttribute('href', mainMenuHref);
+      if (link.classList.contains('home-link')) link.textContent = mainMenuText;
+    });
+  </script>
 </body>
 </html>
