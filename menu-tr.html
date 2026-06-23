@@ -33,6 +33,30 @@
       width: min(100%, 430px);
       margin: 0 auto;
       text-align: center;
+      position: relative;
+    }
+
+    .category-link {
+      position: absolute;
+      top: -12px;
+      right: 0;
+      color: var(--charcoal);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .category-link::before {
+      content: "←";
+      margin-right: 7px;
+      color: var(--amber);
+    }
+
+    .category-link:focus-visible {
+      outline: 3px solid rgba(199, 109, 42, 0.3);
+      outline-offset: 3px;
     }
 
     .brand {
@@ -104,6 +128,7 @@
 </head>
 <body>
   <main class="page">
+    <a class="category-link" href="./category-tr.html">Categories</a>
     <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
     <h1>Ana Menü</h1>
     <p class="subtitle">Menü bölümünü seçin</p>
