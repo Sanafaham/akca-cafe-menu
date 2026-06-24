@@ -29,6 +29,13 @@
     .pizza-card:hover,.pizza-card:focus-visible{border-color:rgba(199,109,42,.72);box-shadow:0 16px 34px rgba(62,39,24,.17),0 0 0 4px rgba(199,109,42,.08);outline:none;transform:translateY(-1px);}
     .pizza-card:active{transform:scale(.992);}
     .pizza-card img{width:100%;height:100%;min-height:112px;object-fit:cover;border-radius:12px;display:block;}
+    .build-card{display:block;margin-top:14px;padding:24px 22px;color:#fff;background:linear-gradient(145deg,#151310,#26211c);border:1px solid rgba(199,109,42,.62);border-radius:18px;box-shadow:0 18px 40px rgba(26,22,20,.22);text-decoration:none;}
+    .build-card h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:2rem;line-height:1;font-weight:700;text-transform:uppercase;color:#ffe5c8;}
+    .build-card p{margin-top:10px;color:rgba(255,255,255,.76);font-size:.86rem;line-height:1.45;}
+    .build-prices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0;}
+    .build-prices span{padding:11px 8px;color:#f9e6d0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;text-align:center;font-size:.86rem;font-weight:600;}
+    .build-button{display:flex;align-items:center;justify-content:center;min-height:48px;color:#fff;background:linear-gradient(180deg,#e36f2d,#c94f10);border-radius:11px;font-weight:700;}
+    .build-card:hover,.build-card:focus-visible{outline:none;box-shadow:0 22px 48px rgba(26,22,20,.28),0 0 0 4px rgba(199,109,42,.14);}
     .body{min-width:0;display:flex;flex-direction:column;justify-content:center;padding:2px 0;}
     .name{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.47rem;font-weight:700;line-height:1.02;}
     .tr{color:var(--amber);font-family:"Cormorant Garamond",Georgia,serif;font-size:1.02rem;font-style:italic;line-height:1.05;margin-top:1px;}
@@ -37,7 +44,7 @@
     .price{color:var(--amber);font-size:1.18rem;font-weight:700;margin-top:8px;}
     .footer{padding-top:20px;color:var(--soft);text-align:center;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;}
     @keyframes pageFade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-    @media(max-width:430px){.page{padding-inline:10px}.topbar{margin-bottom:6px}.brand{width:min(48vw,185px)}.hero{margin-bottom:12px}.rule{margin:14px 0}.cards{gap:10px}.pizza-card{grid-template-columns:118px 1fr;gap:12px;min-height:122px;padding:8px;border-radius:14px}.pizza-card img{min-height:106px;border-radius:11px}.name{font-size:1.25rem}.tr{font-size:.88rem}.desc{font-size:.66rem;line-height:1.28;margin-top:4px}.desc-tr{font-size:.62rem}.price{font-size:1.02rem;margin-top:5px}}
+    @media(max-width:430px){.page{padding-inline:10px}.topbar{margin-bottom:6px}.brand{width:min(48vw,185px)}.hero{margin-bottom:12px}.rule{margin:14px 0}.cards{gap:10px}.pizza-card{grid-template-columns:118px 1fr;gap:12px;min-height:122px;padding:8px;border-radius:14px}.pizza-card img{min-height:106px;border-radius:11px}.name{font-size:1.25rem}.tr{font-size:.88rem}.desc{font-size:.66rem;line-height:1.28;margin-top:4px}.desc-tr{font-size:.62rem}.price{font-size:1.02rem;margin-top:5px}.build-card{padding:21px 18px}.build-card h2{font-size:1.78rem}.build-prices{grid-template-columns:1fr;gap:7px}}
     @media(max-width:350px){.pizza-card{grid-template-columns:96px 1fr}.name{font-size:1.1rem}.desc,.desc-tr{font-size:.58rem}.price{font-size:.92rem}}
     @media(prefers-reduced-motion:reduce){body{animation:none}.pizza-card{transition:none}}
   </style>
@@ -55,13 +62,19 @@
       <div class="rule" aria-hidden="true"><span>🍁</span></div>
     </header>
     <section class="cards" aria-label="Pizza selections">
-      <article class="pizza-card"><img src="./pizza-margarita.jpg" alt="Margarita Pizza"><div class="body"><h2 class="name">Margarita Pizza</h2><p class="tr">Margarita Pizza</p><p class="desc">Tomato sauce, mozzarella, fresh basil, extra virgin olive oil.</p><p class="desc-tr">Domates sosu, mozzarella, taze fesleğen, sızma zeytinyağı.</p><p class="price">₺350</p></div></article>
+      <article class="pizza-card"><img src="./pizza-margarita.jpg" alt="Margherita Pizza"><div class="body"><h2 class="name">Margherita Pizza</h2><p class="tr">Margarita Pizza</p><p class="desc">Tomato sauce, mozzarella, fresh basil, extra virgin olive oil.</p><p class="desc-tr">Domates sosu, mozzarella, taze fesleğen, sızma zeytinyağı.</p><p class="price">₺350</p></div></article>
       <article class="pizza-card"><img src="./pizza-akca-special.jpg" alt="AKÇA Special"><div class="body"><h2 class="name">AKÇA Special</h2><p class="tr">AKÇA Özel Pizza</p><p class="desc">Tomato sauce, mozzarella, Turkish sucuk, black olives, mushrooms.</p><p class="desc-tr">Domates sosu, mozzarella, Türk sucuğu, siyah zeytin, mantar.</p><p class="price">₺450</p></div></article>
       <article class="pizza-card"><img src="./pizza-veggie.jpg" alt="Veggie Pizza"><div class="body"><h2 class="name">Veggie Pizza</h2><p class="tr">Sebzeli Pizza</p><p class="desc">Tomato sauce, mozzarella, bell peppers, olives, onions, mushrooms, cherry tomatoes.</p><p class="desc-tr">Domates sosu, mozzarella, biberler, zeytin, soğan, mantar, cherry domates.</p><p class="price">₺400</p></div></article>
       <article class="pizza-card"><img src="./pizza-mushroom.jpg" alt="Mushroom Pizza"><div class="body"><h2 class="name">Mushroom Pizza</h2><p class="tr">Mantarlı Pizza</p><p class="desc">Tomato sauce, mozzarella, mushrooms, garlic, oregano.</p><p class="desc-tr">Domates sosu, mozzarella, mantar, sarımsak, kekik.</p><p class="price">₺400</p></div></article>
       <article class="pizza-card"><img src="./pizza-pepperoni.jpg" alt="Pepperoni Pizza"><div class="body"><h2 class="name">Pepperoni Pizza</h2><p class="tr">Pepperoni Pizza</p><p class="desc">Tomato sauce, mozzarella, pepperoni, oregano.</p><p class="desc-tr">Domates sosu, mozzarella, pepperoni, kekik.</p><p class="price">₺450</p></div></article>
-      <a class="pizza-card" data-builder-link href="./build-pizza-en.html"><img src="./pizza-create-own.jpg" alt="Create Your Own Pizza"><div class="body"><h2 class="name">Create Your Own Pizza</h2><p class="tr">Kendi Pizzanı Oluştur</p><p class="desc">Choose your sauce, cheese &amp; toppings to create your perfect pizza.</p><p class="desc-tr">Sosunu, peynirini ve malzemelerini seç, kendi mükemmel pizzanı oluştur.</p><p class="price">Chicken ₺450 · Salmon ₺500 · Shrimp ₺500</p></div></a>
+      <article class="pizza-card"><img src="./pizza-create-own.jpg" alt="Create Your Own Pizza"><div class="body"><h2 class="name">Create Your Own Pizza</h2><p class="tr">Kendi Pizzanı Oluştur</p><p class="desc">Choose your sauce, cheese &amp; toppings to create your perfect pizza.</p><p class="desc-tr">Sosunu, peynirini ve malzemelerini seç, kendi mükemmel pizzanı oluştur.</p><p class="price">Chicken ₺450 · Salmon ₺500 · Shrimp ₺500</p></div></article>
     </section>
+    <a class="build-card" data-builder-link href="./build-pizza-en.html">
+      <h2>Build Your Own Pizza</h2>
+      <p>Customize your pizza with your choice of sauce, cheese, toppings and dressings.</p>
+      <div class="build-prices" aria-label="Build your own pizza prices"><span>Chicken ₺450</span><span>Salmon ₺500</span><span>Shrimp ₺500</span></div>
+      <span class="build-button">Build Your Own →</span>
+    </a>
     <footer class="footer">AKÇA Kitchen &amp; Café · Fresh Daily</footer>
   </main>
   <script>
