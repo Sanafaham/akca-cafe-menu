@@ -219,6 +219,43 @@ body{
   color:var(--amber-light);font-weight:500;
 }
 
+#byo .byo{display:none;}
+.builder-launch{
+  margin:8px 16px 0;
+  min-height:118px;
+  padding:22px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  color:#fff;
+  background:linear-gradient(145deg,#171512,#25201b);
+  border:1px solid rgba(201,109,42,.62);
+  border-radius:16px;
+  box-shadow:0 18px 40px rgba(0,0,0,.18);
+  text-decoration:none;
+}
+.builder-launch strong{
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:25px;
+  line-height:1.05;
+  margin-bottom:5px;
+}
+.builder-launch span{
+  display:block;
+  color:rgba(255,255,255,.62);
+  font-size:11px;
+  line-height:1.45;
+}
+.builder-launch em{
+  color:var(--amber-light);
+  font-style:normal;
+  font-size:30px;
+}
+.card.is-link{cursor:pointer;}
+.card.is-link:focus-visible{outline:3px solid rgba(201,109,42,.28);outline-offset:3px;}
+
 /* ── FOOTER ── */
 .footer{
   text-align:center;padding:36px 20px 20px;
@@ -400,6 +437,10 @@ body{
 
 <!-- BUILD YOUR OWN -->
 <div id="byo" class="anchor menu-section" style="padding-top:24px;" hidden>
+  <a class="builder-launch" href="./build-bowl-en.html">
+    <span><strong>Create Your Own Bowl</strong>Choose 1 base, 1 protein, up to 4 toppings and 1 sauce.</span>
+    <em aria-hidden="true">›</em>
+  </a>
   <div class="byo">
     <div class="byo-title">Build Your Own</div>
     <div class="byo-title-tr">Kendi Kaseni Oluştur</div>
@@ -501,6 +542,23 @@ links.forEach(link => {
 });
 
 showSection(sections.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'sig');
+
+document.querySelectorAll('.card').forEach(card => {
+  const title = card.querySelector('.dish-name')?.textContent.trim();
+  if(title !== 'Create Your Own Bowl') return;
+  card.classList.add('is-link');
+  card.tabIndex = 0;
+  card.setAttribute('role','link');
+  card.setAttribute('aria-label','Open Create Your Own Bowl builder');
+  const open = () => { window.location.href = './build-bowl-en.html'; };
+  card.addEventListener('click', open);
+  card.addEventListener('keydown', event => {
+    if(event.key === 'Enter' || event.key === ' '){
+      event.preventDefault();
+      open();
+    }
+  });
+});
 </script>
 </body>
 </html>

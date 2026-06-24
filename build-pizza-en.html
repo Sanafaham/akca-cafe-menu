@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11100f">
+  <title>AKÇA — Build Your Own Pizza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--amber:#d96724;--amber-light:#f2b174;--cream:#ffe5c8;--muted:#a5a0a0;--line:rgba(255,255,255,.16);--panel:rgba(255,255,255,.055);}
+    *{box-sizing:border-box;margin:0;padding:0} html{background:#0d0d0c}
+    body{min-height:100svh;color:#f8f1ea;font-family:"DM Sans",sans-serif;background:radial-gradient(circle at 50% 8%,rgba(217,103,36,.16),transparent 22rem),linear-gradient(135deg,#0b0c0b,#181715 45%,#0b0b0a);animation:fade .35s ease-out both}
+    .page{width:min(100%,940px);margin:0 auto;padding:max(24px,env(safe-area-inset-top)) 16px max(112px,calc(env(safe-area-inset-bottom) + 96px))}
+    .back{display:inline-block;color:var(--amber-light);font-weight:600;letter-spacing:.08em;text-decoration:none;text-transform:uppercase;margin-bottom:34px}
+    h1{font-family:"Cormorant Garamond",Georgia,serif;color:var(--cream);font-size:clamp(2.5rem,10vw,4.3rem);font-weight:700;line-height:.95;text-align:center;text-transform:uppercase}
+    .rule{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px;margin:20px auto;color:var(--amber);max-width:680px}.rule:before,.rule:after{content:"";height:2px;background:var(--amber)}
+    .intro{max-width:620px;margin:0 auto 30px;color:#f7f4f1;font-size:clamp(1.05rem,4.4vw,1.55rem);line-height:1.35;text-align:center}
+    .protein{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:30px}.protein .choice{border-radius:0;border:0;border-right:1px solid var(--line);min-height:100px}.protein .choice:last-child{border-right:0}
+    .section{margin:28px 0}.section h2{color:var(--amber);font-size:1.28rem;letter-spacing:.04em;text-transform:uppercase}.section h2 span{color:var(--muted);font-weight:400;margin-left:6px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+    .choice{position:relative;min-height:58px;padding:13px 14px;display:flex;align-items:center;justify-content:center;gap:8px;color:#f9e6d0;background:var(--panel);border:1px solid var(--line);border-radius:12px;font-size:1.02rem;text-align:center;cursor:pointer;transition:.15s ease}
+    .choice input{position:absolute;opacity:0}.choice:has(input:checked){border-color:var(--amber);box-shadow:0 0 0 1px rgba(217,103,36,.7),0 0 22px rgba(217,103,36,.22);color:#fff;background:rgba(217,103,36,.18)}
+    .choice:active{transform:scale(.985)}.price{display:block;color:#fff;font-size:1.2rem;font-weight:700;margin-top:6px}
+    .add,.summary-actions a,.summary-actions button{width:100%;min-height:70px;border:0;border-radius:10px;background:linear-gradient(180deg,#e36f2d,#c94f10);color:#fff;font:600 1.35rem "DM Sans",sans-serif;cursor:pointer;box-shadow:0 16px 34px rgba(217,103,36,.18)}
+    .summary{margin-top:24px;padding:22px;background:rgba(255,255,255,.07);border:1px solid rgba(217,103,36,.45);border-radius:18px}.summary[hidden]{display:none}.summary h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:2rem;color:var(--cream)}.summary p{margin-top:8px;color:#ddd;line-height:1.5}.summary strong{color:#fff}.summary-actions{display:grid;gap:10px;margin-top:18px}.summary-actions button,.summary-actions a{display:grid;place-items:center;min-height:50px;font-size:1rem;text-decoration:none}.summary-actions button:nth-child(1){background:#2b2926}.summary-actions button:nth-child(2){background:#3a2620}
+    @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@media(max-width:560px){.protein,.grid{grid-template-columns:1fr 1fr}.protein .choice{border:1px solid var(--line);border-radius:12px}.protein{border:0;gap:10px}.protein .choice:first-child{grid-column:1/-1}.grid.three{grid-template-columns:1fr 1fr}.page{padding-inline:14px}h1{text-align:left}.intro{text-align:left}.rule{margin-inline:0}}@media(prefers-reduced-motion:reduce){body{animation:none}.choice{transition:none}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="./pizza.html?lang=en">← Pizzas</a>
+    <h1>Build Your Own Pizza</h1><div class="rule" aria-hidden="true"><span>🍁</span></div>
+    <p class="intro">Customize your pizza with your choice of sauce, cheese, toppings and dressings.</p>
+    <form id="builder">
+      <div class="protein">
+        <label class="choice"><input type="radio" name="protein" value="Chicken" data-price="450" required>Chicken <span class="price">₺450</span></label>
+        <label class="choice"><input type="radio" name="protein" value="Salmon" data-price="500">Salmon <span class="price">₺500</span></label>
+        <label class="choice"><input type="radio" name="protein" value="Shrimp" data-price="500">Shrimp <span class="price">₺500</span></label>
+      </div>
+      <section class="section"><h2>1. Base <span>(choose 1)</span></h2><div class="grid two"><label class="choice"><input type="radio" name="base" value="Tomato Sauce" required>Tomato Sauce</label><label class="choice"><input type="radio" name="base" value="Pesto Sauce">Pesto Sauce</label></div></section>
+      <section class="section"><h2>2. Cheese <span>(choose up to 2)</span></h2><div class="grid three"><label class="choice"><input type="checkbox" name="cheese" value="Mozzarella" data-limit="2">Mozzarella</label><label class="choice"><input type="checkbox" name="cheese" value="Feta" data-limit="2">Feta</label><label class="choice"><input type="checkbox" name="cheese" value="Parmesan" data-limit="2">Parmesan</label></div></section>
+      <section class="section"><h2>3. Toppings <span>(choose up to 6)</span></h2><div class="grid three">
+        <label class="choice"><input type="checkbox" name="toppings" value="Pepperoni">Pepperoni</label><label class="choice"><input type="checkbox" name="toppings" value="Sausage">Sausage</label><label class="choice"><input type="checkbox" name="toppings" value="Grilled Chicken">Grilled Chicken</label><label class="choice"><input type="checkbox" name="toppings" value="Mushrooms">Mushrooms</label><label class="choice"><input type="checkbox" name="toppings" value="Olives">Olives</label><label class="choice"><input type="checkbox" name="toppings" value="Bell Peppers">Bell Peppers</label><label class="choice"><input type="checkbox" name="toppings" value="Onions">Onions</label><label class="choice"><input type="checkbox" name="toppings" value="Cherry Tomatoes">Cherry Tomatoes</label><label class="choice"><input type="checkbox" name="toppings" value="Spinach">Spinach</label><label class="choice"><input type="checkbox" name="toppings" value="Jalapeño">Jalapeño</label><label class="choice"><input type="checkbox" name="toppings" value="Sweet Corn">Sweet Corn</label><label class="choice"><input type="checkbox" name="toppings" value="Arugula">Arugula</label><label class="choice"><input type="checkbox" name="toppings" value="Garlic">Garlic</label>
+      </div></section>
+      <section class="section"><h2>4. Dressings <span>(choose up to 2)</span></h2><div class="grid two">
+        <label class="choice"><input type="checkbox" name="dressings" value="Olive Oil">Olive Oil</label><label class="choice"><input type="checkbox" name="dressings" value="Garlic Oil">Garlic Oil</label><label class="choice"><input type="checkbox" name="dressings" value="Chili Oil">Chili Oil</label><label class="choice"><input type="checkbox" name="dressings" value="BBQ Sauce">BBQ Sauce</label>
+      </div></section>
+      <button class="add" type="submit">Add to Order →</button>
+    </form>
+    <section id="summary" class="summary" hidden aria-live="polite"></section>
+  </main>
+  <script>
+    const limits={cheese:2,toppings:6,dressings:2};
+    document.querySelectorAll('input[type=checkbox]').forEach(input=>input.addEventListener('change',()=>{const group=input.name,max=limits[group];if(!max)return;const checked=[...document.querySelectorAll(`input[name="${group}"]:checked`)];if(checked.length>max){input.checked=false;alert(`Choose up to ${max}.`);}}));
+    const values=name=>[...document.querySelectorAll(`input[name="${name}"]:checked`)].map(i=>i.value);
+    builder.addEventListener('submit',e=>{e.preventDefault();const protein=document.querySelector('input[name=protein]:checked');const base=document.querySelector('input[name=base]:checked');if(!protein||!base){builder.reportValidity();return;}summary.hidden=false;summary.innerHTML=`<h2>Order Summary</h2><p><strong>Selected protein:</strong> ${protein.value}</p><p><strong>Selected base:</strong> ${base.value}</p><p><strong>Selected cheeses:</strong> ${values('cheese').join(', ')||'None'}</p><p><strong>Selected toppings:</strong> ${values('toppings').join(', ')||'None'}</p><p><strong>Selected dressings:</strong> ${values('dressings').join(', ')||'None'}</p><p><strong>Total price:</strong> ₺${protein.dataset.price}</p><div class="summary-actions"><button type="button" onclick="summary.hidden=true;builder.scrollIntoView({behavior:'smooth'})">Edit Selection</button><button type="button" onclick="builder.reset();summary.hidden=true">Clear Selection</button><a href="./pizza.html?lang=en">Back to Menu</a></div>`;summary.scrollIntoView({behavior:'smooth',block:'start'});});
+  </script>
+</body>
+</html>
