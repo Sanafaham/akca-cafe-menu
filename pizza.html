@@ -52,8 +52,8 @@
 <body>
   <main class="page">
     <div class="topbar">
-      <a data-main-link href="./category-en.html" aria-label="Return to main menu"><img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café"></a>
-      <a class="home-link" data-main-link href="./category-en.html">Main Menu</a>
+      <a data-main-link href="./main-menu-en.html" aria-label="Return to main menu"><img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café"></a>
+      <a class="home-link" data-main-link href="./main-menu-en.html">Main Menu</a>
     </div>
     <header class="hero">
       <p class="eyebrow">Pizza Menu · Pizza Menüsü</p>
@@ -81,7 +81,7 @@
     const lang = new URLSearchParams(window.location.search).get('lang');
     const tr = lang === 'tr';
     document.documentElement.lang = tr ? 'tr' : 'en';
-    const mainMenuHref = tr ? './category-tr.html' : './category-en.html';
+    const mainMenuHref = tr ? './main-menu-tr.html' : './main-menu-en.html';
     const mainMenuText = tr ? 'Ana Menü' : 'Main Menu';
     document.querySelectorAll('[data-main-link]').forEach(link => {
       link.href = mainMenuHref;
