@@ -152,36 +152,11 @@
       stroke-linejoin: round;
     }
 
-    .turkish-icon {
+    .turkish-emblem {
       width: 62px;
       height: 62px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 34% 30%, #ef873e 0 18%, #d96a22 42%, #c85513 100%);
-      position: relative;
-      box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.24);
-    }
-
-    .turkish-icon::before {
-      content: "";
-      position: absolute;
-      width: 33px;
-      height: 33px;
-      left: 13px;
-      top: 15px;
-      border-radius: 50%;
-      background: #fffdfb;
-      box-shadow: 8px 0 0 #d5601d;
-    }
-
-    .turkish-icon::after {
-      content: "★";
-      position: absolute;
-      right: 12px;
-      top: 20px;
-      color: #fffdfb;
-      font-size: 15px;
-      line-height: 1;
-      transform: rotate(18deg);
+      display: block;
+      filter: drop-shadow(0 4px 8px rgba(199, 109, 42, 0.15));
     }
 
     .split {
@@ -237,7 +212,7 @@
       }
 
       .icon,
-      .turkish-icon {
+      .turkish-emblem {
         width: 58px;
         height: 58px;
       }
@@ -305,7 +280,21 @@
       </a>
 
       <a class="language-card" href="./main-menu-tr.html" lang="tr">
-        <span class="icon" aria-hidden="true"><span class="turkish-icon"></span></span>
+        <span class="icon" aria-hidden="true">
+          <svg class="turkish-emblem" viewBox="0 0 64 64" role="img">
+            <defs>
+              <radialGradient id="turkishGradient" cx="34%" cy="30%" r="68%">
+                <stop offset="0%" stop-color="#ef873e"></stop>
+                <stop offset="48%" stop-color="#d96a22"></stop>
+                <stop offset="100%" stop-color="#c85513"></stop>
+              </radialGradient>
+            </defs>
+            <circle cx="32" cy="32" r="26" fill="url(#turkishGradient)"></circle>
+            <circle cx="27.5" cy="32" r="15.5" fill="#fffdfb"></circle>
+            <circle cx="34.5" cy="32" r="12.8" fill="#d66520"></circle>
+            <path fill="#fffdfb" d="M46.2 24.8l1.7 5.1h5.4l-4.4 3.1 1.7 5.1-4.4-3.1-4.3 3.1 1.6-5.1-4.3-3.1h5.3z"></path>
+          </svg>
+        </span>
         <span class="split" aria-hidden="true"></span>
         <span class="label">Türkçe</span>
       </a>
