@@ -46,15 +46,70 @@
       <section class="section"><h2>4. Dressings <span>(choose up to 2)</span></h2><div class="grid two">
         <label class="choice"><input type="checkbox" name="dressings" value="Olive Oil">Olive Oil</label><label class="choice"><input type="checkbox" name="dressings" value="Garlic Oil">Garlic Oil</label><label class="choice"><input type="checkbox" name="dressings" value="Chili Oil">Chili Oil</label><label class="choice"><input type="checkbox" name="dressings" value="BBQ Sauce">BBQ Sauce</label>
       </div></section>
-      <button class="add" type="submit">Review Selection →</button>
+      <button class="add" id="reviewSelection" type="submit">Review Selection →</button>
     </form>
     <section id="summary" class="summary" hidden aria-live="polite"></section>
   </main>
   <script>
-    const limits={cheese:2,toppings:6,dressings:2};
-    document.querySelectorAll('input[type=checkbox]').forEach(input=>input.addEventListener('change',()=>{const group=input.name,max=limits[group];if(!max)return;const checked=[...document.querySelectorAll(`input[name="${group}"]:checked`)];if(checked.length>max){input.checked=false;alert(`Choose up to ${max}.`);}}));
-    const values=name=>[...document.querySelectorAll(`input[name="${name}"]:checked`)].map(i=>i.value);
-    builder.addEventListener('submit',e=>{e.preventDefault();const protein=document.querySelector('input[name=protein]:checked');const base=document.querySelector('input[name=base]:checked');if(!protein||!base){builder.reportValidity();return;}summary.hidden=false;document.body.style.overflow='hidden';summary.innerHTML=`<div class="summary-card"><h2>Selection Summary</h2><p><strong>Selected item type:</strong> Build Your Own Pizza</p><p><strong>Selected protein:</strong> ${protein.value}</p><p><strong>Selected base:</strong> ${base.value}</p><p><strong>Selected cheeses:</strong> ${values('cheese').join(', ')||'None'}</p><p><strong>Selected toppings:</strong> ${values('toppings').join(', ')||'None'}</p><p><strong>Selected dressings:</strong> ${values('dressings').join(', ')||'None'}</p><p><strong>Total price:</strong> ₺${protein.dataset.price}</p><div class="summary-actions"><button type="button" onclick="summary.hidden=true;document.body.style.overflow=''">Edit Selection</button><button type="button" onclick="builder.reset();summary.hidden=true;document.body.style.overflow='';window.scrollTo({top:0,behavior:'smooth'})">Build Another</button><a href="./category-en.html">Back to Main Menu</a></div></div>`;});
+    const builderForm = document.getElementById('builder');
+    const reviewButton = document.getElementById('reviewSelection');
+    const summaryPanel = document.getElementById('summary');
+    const limits = {cheese: 2, toppings: 6, dressings: 2};
+
+    document.querySelectorAll('input[type=checkbox]').forEach(input => {
+      input.addEventListener('change', () => {
+        const group = input.name;
+        const max = limits[group];
+        if (!max) return;
+        const checked = [...document.querySelectorAll(`input[name="${group}"]:checked`)];
+        if (checked.length > max) {
+          input.checked = false;
+          alert(`Choose up to ${max}.`);
+        }
+      });
+    });
+
+    const selectedValues = name => [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(input => input.value);
+
+    function closeSummary() {
+      summaryPanel.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    function buildAnother() {
+      builderForm.reset();
+      closeSummary();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function showSummary() {
+      const protein = document.querySelector('input[name=protein]:checked');
+      const base = document.querySelector('input[name=base]:checked');
+      if (!protein || !base) {
+        builderForm.reportValidity();
+        return;
+      }
+
+      summaryPanel.hidden = false;
+      document.body.style.overflow = 'hidden';
+      summaryPanel.innerHTML = `<div class="summary-card"><h2>Selection Summary</h2><p><strong>Selected item type:</strong> Create Your Own Pizza</p><p><strong>Selected protein:</strong> ${protein.value}</p><p><strong>Selected base:</strong> ${base.value}</p><p><strong>Selected cheeses:</strong> ${selectedValues('cheese').join(', ') || 'None'}</p><p><strong>Selected toppings:</strong> ${selectedValues('toppings').join(', ') || 'None'}</p><p><strong>Selected dressings:</strong> ${selectedValues('dressings').join(', ') || 'None'}</p><p><strong>Total price:</strong> ₺${protein.dataset.price}</p><div class="summary-actions"><button type="button" data-action="edit">Edit Selection</button><button type="button" data-action="build-another">Build Another</button><a href="./category-en.html">Back to Main Menu</a></div></div>`;
+    }
+
+    builderForm.addEventListener('submit', event => {
+      event.preventDefault();
+      showSummary();
+    });
+
+    reviewButton.addEventListener('click', event => {
+      event.preventDefault();
+      showSummary();
+    });
+
+    summaryPanel.addEventListener('click', event => {
+      const action = event.target?.dataset?.action;
+      if (action === 'edit') closeSummary();
+      if (action === 'build-another') buildAnother();
+    });
   </script>
 </body>
 </html>
