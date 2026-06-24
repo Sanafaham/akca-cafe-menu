@@ -1,305 +1,1033 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f5efe9">
-  <title>AKÇA Kitchen &amp; Café | Menu</title>
-  <!-- deploy: shared-menu-components-95201b8 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --amber: #c76d2a;
-      --amber-soft: #efb98e;
-      --cream: #f5efe9;
-      --charcoal: #171312;
-      --muted: #93877f;
-      --card: rgba(255, 253, 250, 0.74);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5efe9">
+<!-- deploy: spa-root-menu-20260625 -->
+<title>AKÇA Kitchen &amp; Café — Menu</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & TOKENS ─── */
+:root{
+  --amber:#c76d2a; --amber-dark:#9f4816; --amber-light:#e8916a;
+  --cream:#f5efe9; --charcoal:#100d0c; --body:#241d19; --soft:#6f625b;
+  --card-bg:linear-gradient(145deg,rgba(255,253,251,.95),rgba(247,240,232,.88));
+  --card-border:rgba(199,109,42,.22); --card-shadow:0 10px 24px rgba(62,39,24,.13);
+  --card-hover-shadow:0 16px 34px rgba(62,39,24,.17),0 0 0 4px rgba(199,109,42,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{background:var(--cream);scroll-behavior:smooth;}
+body{min-height:100svh;font-family:"DM Sans",sans-serif;color:var(--charcoal);
+  background:radial-gradient(circle at 50% -8%,rgba(199,109,42,.16),transparent 22rem),var(--cream);}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* ─── PAGE SYSTEM ─── */
+.page{display:none;width:min(100%,765px);margin:0 auto;
+  padding:max(18px,env(safe-area-inset-top)) 14px max(80px,calc(env(safe-area-inset-bottom)+72px));
+  animation:pageIn 260ms ease-out both;}
+.page.active{display:block;}
+@keyframes pageIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
-    html {
-      min-height: 100%;
-      background: var(--cream);
-      overflow-x: hidden;
-    }
+/* ─── TOPBAR ─── */
+.topbar{position:relative;display:flex;align-items:center;justify-content:center;
+  margin:0 2px 10px;min-height:82px;}
+.brand-wrap{display:flex;flex-direction:column;align-items:center;max-width:calc(100% - 88px);}
+.logo{display:block;width:min(64vw,280px);height:auto;clip-path:inset(0 0 24% 0);}
+.tagline{font-size:.82rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--amber);text-align:center;margin-top:0;}
+.back-btn{position:absolute;left:0;top:50%;transform:translateY(-50%);
+  color:var(--charcoal);font-size:.68rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;background:none;border:none;padding:4px 0;}
+.back-btn::before{content:"←";margin-right:7px;color:var(--amber);}
+.lang-btn{position:absolute;right:0;top:50%;transform:translateY(-50%);
+  color:var(--soft);font-size:.68rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;background:none;border:none;padding:4px 0;}
 
-    body {
-      min-height: 100svh;
-      color: var(--charcoal);
-      font-family: "DM Sans", sans-serif;
-      background:
-        radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.84), transparent 18rem),
-        radial-gradient(circle at 12% 78%, rgba(199, 109, 42, 0.08), transparent 16rem),
-        linear-gradient(180deg, #fbf8f4 0%, var(--cream) 58%, #f1e8df 100%);
-      overflow-x: hidden;
-    }
+/* ─── HERO ─── */
+.hero{text-align:center;margin-bottom:16px;}
+.eyebrow{color:var(--soft);font-size:.68rem;font-weight:600;letter-spacing:.23em;text-transform:uppercase;}
+.hero-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(2.2rem,11vw,3.35rem);
+  line-height:1;font-weight:700;margin-top:8px;}
+.hero-sub{color:var(--amber);font-family:"Cormorant Garamond",Georgia,serif;
+  font-style:italic;font-size:1.25rem;margin-top:2px;}
+.rule{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  gap:14px;color:var(--amber);margin:18px 0;}
+.rule::before,.rule::after{content:"";height:1px;background:rgba(199,109,42,.36);}
 
-    .page {
-      width: min(100%, 470px);
-      min-height: 100svh;
-      margin: 0 auto;
-      padding: max(60px, env(safe-area-inset-top)) 34px max(84px, calc(env(safe-area-inset-bottom) + 56px));
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      animation: pageFade 420ms ease-out both;
-    }
+/* ─── SECTION HEADER ─── */
+.sec-head{padding:20px 0 8px;}
+.sec-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(1.9rem,8vw,2.7rem);
+  font-weight:700;line-height:1;}
+.sec-sub{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;
+  font-size:1.1rem;color:var(--amber);margin-top:2px;}
+.sec-rule{height:1px;background:rgba(199,109,42,.28);margin:10px 0 14px;}
 
-    .brand {
-      display: block;
-      width: min(82vw, 325px);
-      height: auto;
-      margin: 0 auto 82px;
-    }
+/* ─── CARDS ─── */
+.cards{display:grid;gap:10px;}
 
-    .rule {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 26px;
-      color: var(--amber);
-      margin-bottom: 76px;
-    }
+/* Main menu category cards */
+.cat-card{display:flex;align-items:center;gap:14px;padding:13px 14px;
+  background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:15px;box-shadow:var(--card-shadow);cursor:pointer;
+  transition:transform 150ms ease,box-shadow 180ms ease,border-color 180ms ease;}
+.cat-card:hover{border-color:rgba(199,109,42,.72);box-shadow:var(--card-hover-shadow);transform:translateY(-1px);}
+.cat-card:active{transform:scale(.992);}
+.cat-icon{flex-shrink:0;width:36px;height:36px;display:grid;place-items:center;color:var(--amber);}
+.cat-icon svg{width:28px;height:28px;stroke:currentColor;stroke-width:1.65;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.cat-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(1.6rem,7vw,2.1rem);font-weight:700;line-height:1.04;}
 
-    .rule::before,
-    .rule::after {
-      content: "";
-      height: 1px;
-      background: rgba(199, 109, 42, 0.72);
-    }
+/* Bowl / item cards */
+.item-card{display:grid;grid-template-columns:118px 1fr;gap:12px;align-items:stretch;
+  min-height:118px;padding:10px;background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:15px;box-shadow:var(--card-shadow);overflow:hidden;}
+.item-card img{width:100%;height:100%;min-height:98px;object-fit:cover;border-radius:10px;display:block;}
+.item-body{display:flex;flex-direction:column;justify-content:center;padding:2px 0;min-width:0;}
+.item-name{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.38rem;font-weight:700;
+  line-height:1.05;color:var(--charcoal);}
+.item-tr{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;
+  font-size:.95rem;color:var(--amber);margin-top:1px;}
+.item-desc{font-size:.76rem;line-height:1.35;color:var(--body);margin-top:5px;}
+.item-desc-tr{font-size:.72rem;font-style:italic;color:var(--soft);line-height:1.3;margin-top:2px;}
+.item-price{font-size:1.1rem;font-weight:800;color:var(--amber-dark);margin-top:6px;}
 
-    .leaf {
-      font-size: 1.55rem;
-      line-height: 1;
-      filter: drop-shadow(0 4px 7px rgba(199, 109, 42, 0.18));
-    }
+/* Pizza cards */
+.pizza-card{display:grid;grid-template-columns:132px 1fr;gap:14px;align-items:stretch;
+  min-height:132px;padding:10px;background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:15px;box-shadow:var(--card-shadow);overflow:hidden;
+  transition:transform 150ms ease,box-shadow 180ms ease,border-color 180ms ease;cursor:pointer;}
+.pizza-card:hover{border-color:rgba(199,109,42,.72);box-shadow:var(--card-hover-shadow);transform:translateY(-1px);}
+.pizza-card:active{transform:scale(.992);}
+.pizza-card img{width:100%;height:100%;min-height:112px;object-fit:cover;border-radius:12px;display:block;}
 
-    h1 {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(3rem, 13vw, 4.15rem);
-      font-weight: 600;
-      line-height: 0.98;
-      text-align: center;
-      letter-spacing: -0.035em;
-    }
+/* Drink items */
+.drink-item{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 14px;background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:12px;box-shadow:0 4px 12px rgba(62,39,24,.08);}
+.drink-name{font-size:.95rem;font-weight:500;color:var(--charcoal);line-height:1.25;}
+.drink-price{font-size:1rem;font-weight:800;color:var(--amber-dark);white-space:nowrap;flex-shrink:0;}
 
-    .subtitle {
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: clamp(1.22rem, 5.3vw, 1.62rem);
-      line-height: 1.25;
-      text-align: center;
-    }
+/* ─── TABS ─── */
+.tabs{position:sticky;top:0;z-index:100;display:flex;flex-wrap:wrap;justify-content:center;
+  padding:5px 8px 0;background:rgba(255,253,251,.96);border-top:1px solid rgba(199,109,42,.16);
+  border-bottom:1px solid rgba(199,109,42,.32);box-shadow:0 8px 20px rgba(62,39,24,.08);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+.tab{position:relative;flex:0 0 auto;padding:10px 10px 9px;color:var(--soft);
+  font-size:10px;letter-spacing:1.3px;font-weight:600;text-transform:uppercase;
+  white-space:nowrap;border-radius:12px 12px 0 0;cursor:pointer;background:none;border:none;
+  transition:color .22s,background-color .22s;}
+.tab::after{content:"";position:absolute;left:10px;right:10px;bottom:0;height:2px;
+  border-radius:999px;background:transparent;transition:background-color .22s;}
+.tab.active,.tab:hover{color:var(--amber-dark);background:rgba(199,109,42,.08);}
+.tab.active::after{background:var(--amber);box-shadow:0 0 10px rgba(232,145,74,.48);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
 
-    .actions {
-      display: grid;
-      gap: 26px;
-      margin-top: 78px;
-    }
+/* ─── BUILD CARD ─── */
+.build-card{display:block;margin-top:14px;padding:24px 22px;
+  background:linear-gradient(145deg,#151310,#26211c);border:1px solid rgba(199,109,42,.62);
+  border-radius:18px;box-shadow:0 18px 40px rgba(26,22,20,.22);cursor:pointer;
+  transition:box-shadow 200ms ease;}
+.build-card:hover{box-shadow:0 22px 48px rgba(26,22,20,.28),0 0 0 4px rgba(199,109,42,.14);}
+.build-card h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:2rem;
+  line-height:1;font-weight:700;text-transform:uppercase;color:#ffe5c8;}
+.build-card p{margin-top:10px;color:rgba(255,255,255,.76);font-size:.86rem;line-height:1.45;}
+.build-prices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0;}
+.build-prices span{padding:11px 8px;color:#f9e6d0;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);border-radius:12px;text-align:center;font-size:.86rem;font-weight:600;}
+.build-btn-label{display:flex;align-items:center;justify-content:center;min-height:48px;
+  color:#fff;background:linear-gradient(180deg,#e36f2d,#c94f10);border-radius:11px;font-weight:700;}
 
-    .language-card {
-      min-height: 126px;
-      padding: 22px 30px;
-      display: grid;
-      grid-template-columns: 82px 1px 1fr;
-      align-items: center;
-      gap: 26px;
-      color: var(--charcoal);
-      background: linear-gradient(145deg, rgba(255, 253, 250, 0.88), var(--card));
-      border: 1px solid rgba(199, 109, 42, 0.62);
-      border-radius: 17px;
-      box-shadow: 0 20px 48px rgba(62, 39, 24, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.82);
-      text-decoration: none;
-      touch-action: manipulation;
-      transition: transform 160ms ease, box-shadow 180ms ease, border-color 180ms ease;
-    }
+/* ─── HOME PAGE ─── */
+.home-page{min-height:100svh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:40px 20px;}
+.home-logo{width:min(65vw,260px);display:block;margin:0 auto 0;clip-path:inset(0 0 24% 0);}
+.home-tagline{font-size:.82rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--amber);text-align:center;margin-top:0 ;margin-bottom:24px;}
+.home-title{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(1.6rem,8vw,2.6rem);
+  font-weight:700;text-align:center;color:var(--charcoal);line-height:1.1;margin-bottom:8px;}
+.home-sub{color:var(--soft);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;
+  text-align:center;margin-bottom:24px;}
+.lang-cards{display:grid;gap:10px;width:100%;max-width:340px;}
+.lang-card{display:flex;align-items:center;justify-content:center;gap:12px;min-height:56px;
+  padding:14px 20px;background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:15px;box-shadow:var(--card-shadow);cursor:pointer;font-size:.92rem;
+  font-weight:600;color:var(--charcoal);transition:transform 150ms ease,box-shadow 180ms ease;}
+.lang-card:hover{transform:translateY(-1px);box-shadow:var(--card-hover-shadow);}
+.lang-card:active{transform:scale(.992);}
+.lang-card span{color:var(--amber);font-size:1.2rem;}
 
-    .language-card:active {
-      transform: scale(0.992);
-    }
+/* ─── BUILDER PAGES ─── */
+.builder-page{background:linear-gradient(135deg,#0b0c0b,#181715 45%,#0b0b0a);
+  min-height:100svh;color:#f8f1ea;}
+.builder-page.active .page-inner{
+  width:min(100%,940px);margin:0 auto;
+  padding:max(24px,env(safe-area-inset-top)) 16px max(112px,calc(env(safe-area-inset-bottom)+96px));}
+.bback{display:inline-block;color:#f2b174;font-weight:600;letter-spacing:.08em;
+  text-decoration:none;text-transform:uppercase;margin-bottom:34px;cursor:pointer;background:none;border:none;}
+.bback::before{content:"← ";}
+.bh1{font-family:"Cormorant Garamond",Georgia,serif;color:#ffe5c8;
+  font-size:clamp(2.5rem,10vw,4.3rem);font-weight:700;line-height:.95;text-align:center;text-transform:uppercase;}
+.brule{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  gap:18px;margin:20px auto;color:var(--amber);max-width:680px;}
+.brule::before,.brule::after{content:"";height:2px;background:var(--amber);}
+.bintro{max-width:620px;margin:0 auto 30px;color:#f7f4f1;
+  font-size:clamp(1.05rem,4.4vw,1.55rem);line-height:1.35;text-align:center;}
+.bsec{margin:28px 0;}
+.bsec h2{color:var(--amber);font-size:1.28rem;letter-spacing:.04em;text-transform:uppercase;}
+.bsec h2 span{color:#a5a0a0;font-weight:400;margin-left:6px;}
+.bline{display:none;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+.protein-row{display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid rgba(255,255,255,.16);border-radius:16px;overflow:hidden;margin-bottom:30px;}
+.choice{position:relative;min-height:82px;padding:13px 14px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  color:#f9e6d0;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.16);
+  border-radius:12px;font-size:1.02rem;text-align:center;cursor:pointer;transition:.15s ease;}
+.protein-row .choice{border-radius:0;border:0;border-right:1px solid rgba(255,255,255,.16);}
+.protein-row .choice:last-child{border-right:0;}
+.choice input{position:absolute;opacity:0;pointer-events:none;}
+.choice.selected{border-color:var(--amber);
+  box-shadow:0 0 0 1px rgba(217,103,36,.7),0 0 22px rgba(217,103,36,.22);
+  color:#fff;background:rgba(217,103,36,.18);}
+.choice:active{transform:scale(.985);}
+.cprice{display:block;color:#fff;font-size:1.2rem;font-weight:700;margin-top:6px;}
+.badd{width:100%;min-height:70px;border:0;border-radius:10px;
+  background:linear-gradient(180deg,#e36f2d,#c94f10);color:#fff;
+  font:600 1.35rem "DM Sans",sans-serif;cursor:pointer;
+  box-shadow:0 16px 34px rgba(217,103,36,.18);transition:opacity .15s;}
+.badd:hover{opacity:.9;}
+.bprice-info{padding:20px 0 14px;text-align:center;color:#ddd;font-size:1.16rem;
+  line-height:1.35;border-top:1px solid rgba(255,255,255,.16);}
 
-    .language-card:hover,
-    .language-card:focus-visible {
-      border-color: rgba(199, 109, 42, 0.92);
-      box-shadow: 0 24px 58px rgba(62, 39, 24, 0.12), 0 0 0 4px rgba(199, 109, 42, 0.08);
-      outline: none;
-      transform: translateY(-2px);
-    }
+/* ─── SUMMARY OVERLAY ─── */
+.summary-overlay{position:fixed;inset:0;z-index:999;display:none;align-items:flex-end;
+  padding:max(18px,env(safe-area-inset-top)) 14px max(22px,calc(env(safe-area-inset-bottom)+22px));
+  background:rgba(5,5,5,.74);backdrop-filter:blur(10px);}
+.summary-overlay.open{display:flex;}
+.summary-card{width:min(100%,520px);max-height:85svh;overflow:auto;margin:0 auto;
+  padding:22px;background:linear-gradient(145deg,#151310,#25201b);
+  border:1px solid rgba(217,103,36,.55);border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,.45);}
+.summary-card h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:2rem;color:#ffe5c8;}
+.summary-card p{margin-top:8px;color:#ddd;line-height:1.5;}
+.summary-card strong{color:#fff;}
+.summary-actions{display:grid;gap:10px;margin-top:18px;}
+.sum-btn{display:grid;place-items:center;min-height:52px;font-size:1rem;border:0;
+  border-radius:10px;cursor:pointer;color:#fff;font-family:"DM Sans",sans-serif;font-weight:600;}
+.sum-edit{background:#2b2926;}
+.sum-clear{background:#3a2620;}
+.sum-back{background:linear-gradient(180deg,#e36f2d,#c94f10);}
 
-    .icon {
-      width: 64px;
-      height: 64px;
-      display: grid;
-      place-items: center;
-      color: var(--amber);
-    }
+/* ─── MILKSHAKE GRID ─── */
+.mk-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px;}
+.mk-item{padding:14px 8px;background:var(--card-bg);border:1px solid var(--card-border);
+  border-radius:12px;text-align:center;}
+.mk-name{font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--charcoal);text-transform:uppercase;}
+.mk-price{font-size:.95rem;font-weight:800;color:var(--amber-dark);margin-top:4px;}
 
-    .icon svg {
-      width: 62px;
-      height: 62px;
-      display: block;
-      stroke: currentColor;
-      stroke-width: 1.9;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
+/* ─── FOOTER ─── */
+.pg-footer{padding-top:20px;color:var(--soft);text-align:center;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;}
 
-    .turkish-emblem {
-      width: 62px;
-      height: 62px;
-      display: block;
-      filter: drop-shadow(0 4px 8px rgba(199, 109, 42, 0.15));
-    }
+/* ─── RIPPLE ─── */
+@keyframes ripple{from{transform:scale(0);opacity:.35;}to{transform:scale(2.8);opacity:0;}}
+.ripple-circle{position:absolute;pointer-events:none;border-radius:50%;
+  background:rgba(199,109,42,.28);width:60px;height:60px;margin-left:-30px;margin-top:-30px;
+  animation:ripple 520ms ease-out forwards;}
 
-    .split {
-      width: 1px;
-      height: 76px;
-      background: rgba(199, 109, 42, 0.48);
-    }
-
-    .label {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(2.05rem, 9vw, 2.7rem);
-      font-weight: 600;
-      letter-spacing: -0.025em;
-      line-height: 1;
-    }
-
-    @keyframes pageFade {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 390px) {
-      .page {
-        padding: max(48px, env(safe-area-inset-top)) 28px max(76px, calc(env(safe-area-inset-bottom) + 48px));
-      }
-
-      .brand {
-        width: min(80vw, 305px);
-        margin-bottom: 68px;
-      }
-
-      .rule {
-        gap: 22px;
-        margin-bottom: 62px;
-      }
-
-      .actions {
-        gap: 22px;
-        margin-top: 64px;
-      }
-
-      .language-card {
-        min-height: 118px;
-        padding: 19px 24px;
-        grid-template-columns: 70px 1px 1fr;
-        gap: 22px;
-      }
-
-      .icon,
-      .turkish-emblem {
-        width: 58px;
-        height: 58px;
-      }
-
-      .icon svg {
-        width: 58px;
-        height: 58px;
-      }
-
-      .split {
-        height: 68px;
-      }
-    }
-
-    @media (max-height: 760px) {
-      .page {
-        padding-top: max(34px, env(safe-area-inset-top));
-      }
-
-      .brand {
-        margin-bottom: 46px;
-      }
-
-      .rule {
-        margin-bottom: 42px;
-      }
-
-      .actions {
-        margin-top: 42px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .page,
-      .language-card {
-        animation: none;
-        transition: none;
-      }
-    }
-  </style>
+/* ─── RESPONSIVE ─── */
+@media(max-width:430px){
+  .page{padding-inline:10px;}
+  .topbar{min-height:72px;margin-bottom:6px;}
+  .logo{width:min(52vw,200px);}
+  .tab{flex:1 1 30%;text-align:center;font-size:8.5px;letter-spacing:.7px;padding-inline:4px;}
+  .item-card{grid-template-columns:100px 1fr;min-height:100px;}
+  .item-card img{min-height:80px;}
+  .pizza-card{grid-template-columns:110px 1fr;min-height:116px;padding:8px;}
+  .pizza-card img{min-height:100px;border-radius:10px;}
+  .build-prices{grid-template-columns:1fr;}
+  .mk-grid{grid-template-columns:repeat(3,1fr);}
+  .grid{grid-template-columns:1fr 1fr;}
+  .grid-2{grid-template-columns:1fr 1fr;}
+  .protein-row{border:0;gap:8px;}
+  .protein-row .choice{border-radius:12px;border:1px solid rgba(255,255,255,.16);}
+  .protein-row .choice:first-child{grid-column:1/-1;}
+  .protein-row{display:grid;grid-template-columns:1fr 1fr;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;}
+}
+</style>
 </head>
 <body>
-  <main class="page" aria-labelledby="language-heading">
-    <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café — Fresh Daily, Brewed Perfectly">
 
-    <div class="rule" aria-hidden="true"><span class="leaf">🍁</span></div>
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: HOME / LANGUAGE PICKER
+══════════════════════════════════════════════════════════ -->
+<div id="page-home" class="page active" style="padding:0;">
+  <div class="home-page">
+    <img class="home-logo" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+    <p class="home-tagline">Fresh Daily &bull; Brewed Perfectly</p>
+    <h1 class="home-title">AKÇA Kitchen &amp; Café</h1>
+    <p class="home-sub">Interactive Menu · İnteraktif Menü</p>
+    <div class="rule" aria-hidden="true" style="width:100%;max-width:340px;margin:0 auto 20px;"><span>🍁</span></div>
+    <div class="lang-cards">
+      <div class="lang-card" onclick="go('main-en')"><span>🇬🇧</span> English Menu</div>
+      <div class="lang-card" onclick="go('main-tr')"><span>🇹🇷</span> Türkçe Menü</div>
+    </div>
+  </div>
+</div>
 
-    <h1 id="language-heading">Choose Language</h1>
-    <p class="subtitle" lang="tr">Lütfen dilinizi seçin</p>
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: MAIN MENU — ENGLISH
+══════════════════════════════════════════════════════════ -->
+<div id="page-main-en" class="page">
+  <div class="topbar">
+    <div class="brand-wrap">
+      <img class="logo" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+      <p class="tagline">Fresh Daily &bull; Brewed Perfectly</p>
+    </div>
+    <button class="lang-btn" onclick="go('home')">🌐 Language</button>
+  </div>
+  <header class="hero">
+    <div class="rule" aria-hidden="true"><span>🍁</span></div>
+    <h1 class="hero-title">Main Menu</h1>
+    <p class="eyebrow" style="margin-top:6px;">Choose a section · Bir bölüm seçin</p>
+  </header>
+  <nav class="cards" aria-label="AKÇA main menu">
+    <div class="cat-card" onclick="go('bowls');setLang('en')">
+      <span class="cat-icon"><svg viewBox="0 0 48 48"><path d="M11 25h26c-1.2 8.5-5.5 13-13 13S12.2 33.5 11 25Z"/><path d="M17 20c-2.2-4.5.4-7 4-8"/><path d="M24 20c-2.2-4.5.4-7 4-8"/><path d="M31 20c-2.2-4.5.4-7 4-8"/></svg></span>
+      <span class="cat-title">Bowls (Kaseler)</span>
+    </div>
+    <div class="cat-card" onclick="go('pizza');setLang('en')">
+      <span class="cat-icon"><svg viewBox="0 0 48 48"><path d="M13 37 36 12c3 9 0 18-6 23-5 4-11 5-17 2Z"/><circle cx="22" cy="28" r="1.5" fill="currentColor"/><circle cx="28" cy="22" r="1.5" fill="currentColor"/></svg></span>
+      <span class="cat-title">Pizzas (Pizzalar)</span>
+    </div>
+    <div class="cat-card" onclick="go('drinks');setLang('en')">
+      <span class="cat-icon"><svg viewBox="0 0 48 48"><path d="M18 14h15l-2.4 24H20.4L18 14Z"/><path d="M17 14h17"/><path d="M25 14V8l6-2"/></svg></span>
+      <span class="cat-title">Drinks (İçecekler)</span>
+    </div>
+    <div class="cat-card" onclick="go('dessert');setLang('en')">
+      <span class="cat-icon"><svg viewBox="0 0 48 48"><path d="M12 34h24"/><path d="M14 25h20v9H14z"/><path d="M16 20h16l2 5H14l2-5Z"/><path d="M24 20v-5"/><circle cx="24" cy="12" r="3"/></svg></span>
+      <span class="cat-title">Desserts (Tatlılar)</span>
+    </div>
+  </nav>
+  <footer class="pg-footer">AKÇA Kitchen &amp; Café · Fresh Daily · Brewed Perfectly</footer>
+</div>
 
-    <nav class="actions" aria-label="Menu language">
-      <a class="language-card" href="./main-menu-en.html" lang="en">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 64 64">
-            <circle cx="32" cy="32" r="24"></circle>
-            <path d="M8 32h48"></path>
-            <path d="M32 8c7 6 10.5 14 10.5 24S39 50 32 56"></path>
-            <path d="M32 8c-7 6-10.5 14-10.5 24S25 50 32 56"></path>
-            <path d="M14 20h36"></path>
-            <path d="M14 44h36"></path>
-          </svg>
-        </span>
-        <span class="split" aria-hidden="true"></span>
-        <span class="label">English</span>
-      </a>
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: MAIN MENU — TURKISH
+══════════════════════════════════════════════════════════ -->
+<div id="page-main-tr" class="page">
+  <div class="topbar">
+    <div class="brand-wrap">
+      <img class="logo" src="./akca-logo.png" alt="AKÇA Mutfak &amp; Kafe">
+      <p class="tagline">Fresh Daily &bull; Brewed Perfectly</p>
+    </div>
+    <button class="lang-btn" onclick="go('home')">🌐 Dil</button>
+  </div>
+  <header class="hero">
+    <div class="rule" aria-hidden="true"><span>🍁</span></div>
+    <h1 class="hero-title">Ana Menü</h1>
+    <p class="eyebrow" style="margin-top:6px;">Bir bölüm seçin · Choose a section</p>
+  </header>
+  <nav class="cards">
+    <div class="cat-card" onclick="go('bowls');setLang('tr')">
+      <span class="cat-icon"><svg viewBox="0 0 48 48"><path d="M11 25h26c-1.2 8.5-5.5 13-13 13S12.2 33.5 11 25Z"/><path d="M17 20c-2.2-4.5.4-7 4-8"/><path d="M24 20c-2.2-4.5.4-7 4-8"/><path d="M31 20c-2.2-4.5.4-7 4-8"/></svg></span>
+      <span class="cat-title">Kaseler (Bowls)</span>
+    </div>
+    <div class="cat-card" onclick="go('pizza');setLang('tr')">
+      <span class="cat-icon"><svg viewBox="0 0 48 48"><path d="M13 37 36 12c3 9 0 18-6 23-5 4-11 5-17 2Z"/><circle cx="22" cy="28" r="1.5" fill="currentColor"/><circle cx="28" cy="22" r="1.5" fill="currentColor"/></svg></span>
+      <span class="cat-title">Pizzalar (Pizzas)</span>
+    </div>
+    <div class="cat-card" onclick="go('drinks');setLang('tr')">
+      <span class="cat-icon"><svg viewBox="0 0 48 48"><path d="M18 14h15l-2.4 24H20.4L18 14Z"/><path d="M17 14h17"/><path d="M25 14V8l6-2"/></svg></span>
+      <span class="cat-title">İçecekler (Drinks)</span>
+    </div>
+    <div class="cat-card" onclick="go('dessert');setLang('tr')">
+      <span class="cat-icon"><svg viewBox="0 0 48 48"><path d="M12 34h24"/><path d="M14 25h20v9H14z"/><path d="M16 20h16l2 5H14l2-5Z"/><path d="M24 20v-5"/><circle cx="24" cy="12" r="3"/></svg></span>
+      <span class="cat-title">Tatlılar (Desserts)</span>
+    </div>
+  </nav>
+  <footer class="pg-footer">AKÇA Mutfak &amp; Kafe · Her Gün Taze · Özenle Hazırlanmış</footer>
+</div>
 
-      <a class="language-card" href="./main-menu-tr.html" lang="tr">
-        <span class="icon" aria-hidden="true">
-          <svg class="turkish-emblem" viewBox="0 0 64 64" role="img">
-            <defs>
-              <radialGradient id="turkishGradient" cx="34%" cy="30%" r="68%">
-                <stop offset="0%" stop-color="#ef873e"></stop>
-                <stop offset="48%" stop-color="#d96a22"></stop>
-                <stop offset="100%" stop-color="#c85513"></stop>
-              </radialGradient>
-            </defs>
-            <circle cx="32" cy="32" r="26" fill="url(#turkishGradient)"></circle>
-            <circle cx="27.5" cy="32" r="15.5" fill="#fffdfb"></circle>
-            <circle cx="34.5" cy="32" r="12.8" fill="#d66520"></circle>
-            <path fill="#fffdfb" d="M46.2 24.8l1.7 5.1h5.4l-4.4 3.1 1.7 5.1-4.4-3.1-4.3 3.1 1.6-5.1-4.3-3.1h5.3z"></path>
-          </svg>
-        </span>
-        <span class="split" aria-hidden="true"></span>
-        <span class="label">Türkçe</span>
-      </a>
-    </nav>
-  </main>
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: BOWLS MENU
+══════════════════════════════════════════════════════════ -->
+<div id="page-bowls" class="page">
+  <div class="topbar">
+    <div class="brand-wrap">
+      <img class="logo" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+      <p class="tagline">Fresh Daily &bull; Brewed Perfectly</p>
+    </div>
+    <button class="back-btn" onclick="goBack()">Main Menu</button>
+  </div>
+  <header class="hero">
+    <h1 class="hero-title">Bowls</h1>
+    <p class="hero-sub">Kaseler</p>
+    <div class="rule" aria-hidden="true"><span>🍁</span></div>
+  </header>
+
+  <!-- TABS -->
+  <div class="tabs" role="tablist">
+    <button class="tab active" role="tab" onclick="switchTab(this,'sig')">Signature</button>
+    <button class="tab" role="tab" onclick="switchTab(this,'chk')">Chicken</button>
+    <button class="tab" role="tab" onclick="switchTab(this,'ext')">Salads &amp; More</button>
+    <button class="tab" role="tab" onclick="switchTab(this,'byo')">Build Your Own</button>
+  </div>
+
+  <!-- SIGNATURE BOWLS -->
+  <div id="tab-sig" class="tab-panel active">
+    <div class="sec-head">
+      <h2 class="sec-title">Signature Bowls</h2>
+      <p class="sec-sub">İmza Kaseler</p>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="cards">
+      <div class="item-card"><img src="./bowl-chicken.jpg" alt="Chicken Bowl"><div class="item-body"><div class="item-name">Chicken Bowl</div><div class="item-tr">Tavuk Kase</div><div class="item-desc">Grilled chicken, rice, mixed greens, avocado, cherry tomato, cucumber, AKÇA dressing.</div><div class="item-desc-tr">Izgara tavuk, pirinç, karışık yeşillikler, avokado, cherry domates, salatalık, AKÇA sos.</div><div class="item-price">₺475</div></div></div>
+      <div class="item-card"><img src="./bowl-harvest-chicken.jpg" alt="Harvest Chicken Bowl"><div class="item-body"><div class="item-name">Harvest Chicken Bowl</div><div class="item-tr">Hasat Tavuk Kase</div><div class="item-desc">Chicken, chickpeas, sweet corn, mushroom, caramelized onion, boiled egg, cucumber, cherry tomato, greens, AKÇA dressing.</div><div class="item-desc-tr">Tavuk, nohut, tatlı mısır, mantar, karamelize soğan, yumurta, salatalık, cherry domates, yeşillikler, AKÇA sos.</div><div class="item-price">₺475</div></div></div>
+      <div class="item-card"><img src="./bowl-shrimp.jpg" alt="Shrimp Bowl"><div class="item-body"><div class="item-name">Shrimp Bowl</div><div class="item-tr">Karides Kase</div><div class="item-desc">Grilled shrimp, rice, mixed greens, avocado, cherry tomato, cucumber, AKÇA dressing.</div><div class="item-desc-tr">Izgara karides, pirinç, karışık yeşillikler, avokado, cherry domates, salatalık, AKÇA sos.</div><div class="item-price">₺545</div></div></div>
+      <div class="item-card"><img src="./bowl-smoked-salmon.jpg" alt="Smoked Salmon Bowl"><div class="item-body"><div class="item-name">Smoked Salmon Bowl</div><div class="item-tr">Füme Somon Kase</div><div class="item-desc">Premium smoked salmon, rice, mixed greens, avocado, cherry tomato, cucumber, carrot, AKÇA dressing.</div><div class="item-desc-tr">Premium füme somon, pirinç, yeşillikler, avokado, cherry domates, salatalık, havuç, AKÇA sos.</div><div class="item-price">₺545</div></div></div>
+    </div>
+  </div>
+
+  <!-- CHICKEN COLLECTION -->
+  <div id="tab-chk" class="tab-panel">
+    <div class="sec-head">
+      <h2 class="sec-title">Chicken Collection</h2>
+      <p class="sec-sub">Tavuk Koleksiyonu</p>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="cards">
+      <div class="item-card"><img src="./bowl-teriyaki.jpg" alt="Teriyaki Chicken Bowl"><div class="item-body"><div class="item-name">Teriyaki Chicken Bowl</div><div class="item-tr">Teriyaki Tavuk Kase</div><div class="item-desc">Chicken, rice, mixed greens, avocado, cherry tomato, cucumber, teriyaki sauce.</div><div class="item-desc-tr">Tavuk, pirinç, yeşillikler, avokado, cherry domates, salatalık, teriyaki sos.</div><div class="item-price">₺475</div></div></div>
+      <div class="item-card"><img src="./bowl-sweet-chili.jpg" alt="Sweet Chili Chicken Bowl"><div class="item-body"><div class="item-name">Sweet Chili Chicken Bowl</div><div class="item-tr">Tatlı Acı Tavuk Kase</div><div class="item-desc">Chicken, rice, mixed greens, avocado, cherry tomato, cucumber, sweet chili sauce.</div><div class="item-desc-tr">Tavuk, pirinç, yeşillikler, avokado, cherry domates, salatalık, sweet chili sos.</div><div class="item-price">₺475</div></div></div>
+      <div class="item-card"><img src="./bowl-buckwheat.jpg" alt="Buckwheat Chicken Bowl"><div class="item-body"><div class="item-name">Buckwheat Chicken Bowl</div><div class="item-tr">Karabuğday Tavuk Kase</div><div class="item-desc">Chicken, buckwheat, mixed greens, avocado, cherry tomato, cucumber, AKÇA dressing.</div><div class="item-desc-tr">Tavuk, karabuğday, yeşillikler, avokado, cherry domates, salatalık, AKÇA sos.</div><div class="item-price">₺475</div></div></div>
+      <div class="item-card"><img src="./bowl-power-chicken.jpg" alt="Power Chicken Bowl"><div class="item-body"><div class="item-name">Power Chicken Bowl</div><div class="item-tr">Güç Tavuk Kase</div><div class="item-desc">Chicken, boiled egg, broccoli, mixed greens, cucumber, cherry tomato, AKÇA dressing.</div><div class="item-desc-tr">Tavuk, haşlanmış yumurta, brokoli, yeşillikler, salatalık, cherry domates, AKÇA sos.</div><div class="item-price">₺475</div></div></div>
+    </div>
+  </div>
+
+  <!-- SALADS & MORE -->
+  <div id="tab-ext" class="tab-panel">
+    <div class="sec-head">
+      <h2 class="sec-title">Salads · Superfood · Custom</h2>
+      <p class="sec-sub">Salatalar · Süper Gıda · Özel</p>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="cards">
+      <div class="item-card"><img src="./bowl-caesar.jpg" alt="Caesar Salad Bowl"><div class="item-body"><div class="item-name">Caesar Salad Bowl</div><div class="item-tr">Sezar Salata Kase</div><div class="item-desc">Romaine lettuce, cherry tomato, croutons, shaved Parmesan, Caesar dressing.</div><div class="item-desc-tr">Romaine marul, cherry domates, kruton, parmesan, Sezar sos.</div><div class="item-price">₺475–495</div></div></div>
+      <div class="item-card"><img src="./bowl-acai.jpg" alt="Açaí Bowl"><div class="item-body"><div class="item-name">Açaí Bowl</div><div class="item-tr">Açaí Kase</div><div class="item-desc">Açaí, banana, strawberry, blueberry, toasted almonds, chocolate granola.</div><div class="item-desc-tr">Açaí, muz, çilek, yaban mersini, badem, çikolatalı granola.</div><div class="item-price">₺395</div></div></div>
+      <div class="item-card"><img src="./bowl-granola.jpg" alt="Granola Bowl"><div class="item-body"><div class="item-name">Granola Bowl</div><div class="item-tr">Granola Kase</div><div class="item-desc">Crunchy chocolate granola, fresh strawberries, blueberries, rich chocolate drizzle.</div><div class="item-desc-tr">Çıtır çikolatalı granola, taze çilek, yaban mersini, yoğun çikolata sosu.</div><div class="item-price">₺395</div></div></div>
+    </div>
+  </div>
+
+  <!-- BUILD YOUR OWN BOWL TAB -->
+  <div id="tab-byo" class="tab-panel">
+    <div class="sec-head">
+      <h2 class="sec-title">Build Your Own Bowl</h2>
+      <p class="sec-sub">Kendi Kaseni Oluştur</p>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="item-card" style="cursor:pointer;" onclick="go('build-bowl')">
+      <img src="./bowl-custom.jpg" alt="Create Your Own Bowl">
+      <div class="item-body">
+        <div class="item-name">Create Your Own Bowl</div>
+        <div class="item-tr">Kendi Kaseni Oluştur</div>
+        <div class="item-desc">Choose your base, protein, toppings and dressing.</div>
+        <div class="item-desc-tr">Taban, protein, garnitür ve sos seçimini kendin yap.</div>
+        <div class="item-price">₺475–₺545</div>
+      </div>
+    </div>
+    <div class="build-card" onclick="go('build-bowl')">
+      <h2>Build Your Own Bowl</h2>
+      <p>Choose base, protein, toppings and dressing to create your perfect bowl.</p>
+      <div class="build-prices"><span>Chicken ₺475</span><span>Shrimp ₺545</span><span>Salmon ₺545</span></div>
+      <span class="build-btn-label">Build Your Own →</span>
+    </div>
+  </div>
+
+  <footer class="pg-footer">AKÇA Kitchen &amp; Café · Fresh Daily</footer>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: PIZZA MENU
+══════════════════════════════════════════════════════════ -->
+<div id="page-pizza" class="page">
+  <div class="topbar">
+    <div class="brand-wrap">
+      <img class="logo" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+      <p class="tagline">Fresh Daily &bull; Brewed Perfectly</p>
+    </div>
+    <button class="back-btn" onclick="goBack()">Main Menu</button>
+  </div>
+  <header class="hero">
+    <h1 class="hero-title">Pizza Selection</h1>
+    <p class="hero-sub">Pizza Seçenekleri</p>
+    <div class="rule" aria-hidden="true"><span>🍁</span></div>
+  </header>
+  <div class="cards">
+    <div class="pizza-card"><img src="./pizza-margarita.jpg" alt="Margherita Pizza"><div class="item-body"><div class="item-name">Margherita Pizza</div><div class="item-tr">Margarita Pizza</div><div class="item-desc">Tomato sauce, mozzarella, fresh basil, extra virgin olive oil.</div><div class="item-desc-tr">Domates sosu, mozzarella, taze fesleğen, sızma zeytinyağı.</div><div class="item-price">₺350</div></div></div>
+    <div class="pizza-card"><img src="./pizza-akca-special.jpg" alt="AKÇA Special"><div class="item-body"><div class="item-name">AKÇA Special</div><div class="item-tr">AKÇA Özel Pizza</div><div class="item-desc">Tomato sauce, mozzarella, Turkish sucuk, black olives, mushrooms.</div><div class="item-desc-tr">Domates sosu, mozzarella, Türk sucuğu, siyah zeytin, mantar.</div><div class="item-price">₺450</div></div></div>
+    <div class="pizza-card"><img src="./pizza-veggie.jpg" alt="Veggie Pizza"><div class="item-body"><div class="item-name">Veggie Pizza</div><div class="item-tr">Sebzeli Pizza</div><div class="item-desc">Tomato sauce, mozzarella, bell peppers, olives, onions, mushrooms, cherry tomatoes.</div><div class="item-desc-tr">Domates sosu, mozzarella, biberler, zeytin, soğan, mantar, cherry domates.</div><div class="item-price">₺400</div></div></div>
+    <div class="pizza-card"><img src="./pizza-mushroom.jpg" alt="Mushroom Pizza"><div class="item-body"><div class="item-name">Mushroom Pizza</div><div class="item-tr">Mantarlı Pizza</div><div class="item-desc">Tomato sauce, mozzarella, mushrooms, garlic, oregano.</div><div class="item-desc-tr">Domates sosu, mozzarella, mantar, sarımsak, kekik.</div><div class="item-price">₺400</div></div></div>
+    <div class="pizza-card"><img src="./pizza-pepperoni.jpg" alt="Pepperoni Pizza"><div class="item-body"><div class="item-name">Pepperoni Pizza</div><div class="item-tr">Pepperoni Pizza</div><div class="item-desc">Tomato sauce, mozzarella, pepperoni, oregano.</div><div class="item-desc-tr">Domates sosu, mozzarella, pepperoni, kekik.</div><div class="item-price">₺450</div></div></div>
+    <div class="pizza-card" onclick="go('build-pizza')"><img src="./pizza-create-own.jpg" alt="Create Your Own Pizza"><div class="item-body"><div class="item-name">Create Your Own Pizza</div><div class="item-tr">Kendi Pizzanı Oluştur</div><div class="item-desc">Choose your sauce, cheese and toppings to create your perfect pizza.</div><div class="item-desc-tr">Sosunu, peynirini ve malzemelerini seç, kendi mükemmel pizzanı oluştur.</div><div class="item-price">Chicken ₺450 · Salmon ₺500 · Shrimp ₺500</div></div></div>
+  </div>
+  <div class="build-card" onclick="go('build-pizza')">
+    <h2>Build Your Own Pizza</h2>
+    <p>Customize with your choice of sauce, cheese, toppings and dressings.</p>
+    <div class="build-prices"><span>Chicken ₺450</span><span>Salmon ₺500</span><span>Shrimp ₺500</span></div>
+    <span class="build-btn-label">Build Your Own →</span>
+  </div>
+  <footer class="pg-footer">AKÇA Kitchen &amp; Café · Fresh Daily</footer>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: DRINKS MENU
+══════════════════════════════════════════════════════════ -->
+<div id="page-drinks" class="page">
+  <div class="topbar">
+    <div class="brand-wrap">
+      <img class="logo" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+      <p class="tagline">Fresh Daily &bull; Brewed Perfectly</p>
+    </div>
+    <button class="back-btn" onclick="goBack()">Main Menu</button>
+  </div>
+  <header class="hero">
+    <h1 class="hero-title">Drinks</h1>
+    <p class="hero-sub">İçecekler</p>
+    <div class="rule" aria-hidden="true"><span>🍁</span></div>
+  </header>
+  <div class="tabs" role="tablist">
+    <button class="tab active" onclick="switchTab(this,'hot')">Hot Coffee</button>
+    <button class="tab" onclick="switchTab(this,'iced')">Iced Coffee</button>
+    <button class="tab" onclick="switchTab(this,'matcha')">Matcha</button>
+    <button class="tab" onclick="switchTab(this,'bubble')">Bubble Teas</button>
+    <button class="tab" onclick="switchTab(this,'mock')">Mocktails</button>
+    <button class="tab" onclick="switchTab(this,'other')">Other</button>
+    <button class="tab" onclick="switchTab(this,'mk')">Milkshakes</button>
+  </div>
+
+  <div id="tab-hot" class="tab-panel active">
+    <div class="sec-head"><h2 class="sec-title">Hot Coffee</h2><p class="sec-sub">Sıcak Kahve</p><div class="sec-rule"></div></div>
+    <div class="cards">
+      <div class="drink-item"><span class="drink-name">Espresso</span><span class="drink-price">₺140</span></div>
+      <div class="drink-item"><span class="drink-name">Doppio</span><span class="drink-price">₺150</span></div>
+      <div class="drink-item"><span class="drink-name">Cortado</span><span class="drink-price">₺210</span></div>
+      <div class="drink-item"><span class="drink-name">Espresso Macchiato</span><span class="drink-price">₺145</span></div>
+      <div class="drink-item"><span class="drink-name">Espresso Macchiato Doppio</span><span class="drink-price">₺155</span></div>
+      <div class="drink-item"><span class="drink-name">Americano</span><span class="drink-price">₺180</span></div>
+      <div class="drink-item"><span class="drink-name">Latte</span><span class="drink-price">₺200</span></div>
+      <div class="drink-item"><span class="drink-name">Cappuccino</span><span class="drink-price">₺200</span></div>
+      <div class="drink-item"><span class="drink-name">Flat White</span><span class="drink-price">₺225</span></div>
+      <div class="drink-item"><span class="drink-name">Mocha / White Mocha</span><span class="drink-price">₺245</span></div>
+      <div class="drink-item"><span class="drink-name">Caramel Macchiato</span><span class="drink-price">₺245</span></div>
+      <div class="drink-item"><span class="drink-name">Madagascar Latte</span><span class="drink-price">₺250</span></div>
+      <div class="drink-item"><span class="drink-name">Affogato</span><span class="drink-price">₺250</span></div>
+    </div>
+  </div>
+
+  <div id="tab-iced" class="tab-panel">
+    <div class="sec-head"><h2 class="sec-title">Iced Coffee</h2><p class="sec-sub">Soğuk Kahve</p><div class="sec-rule"></div></div>
+    <div class="cards">
+      <div class="drink-item"><span class="drink-name">Iced Americano</span><span class="drink-price">₺210</span></div>
+      <div class="drink-item"><span class="drink-name">Iced Latte</span><span class="drink-price">₺220</span></div>
+      <div class="drink-item"><span class="drink-name">Iced Caramel Latte</span><span class="drink-price">₺265</span></div>
+      <div class="drink-item"><span class="drink-name">Iced White Mocha</span><span class="drink-price">₺265</span></div>
+      <div class="drink-item"><span class="drink-name">Iced Mocha</span><span class="drink-price">₺265</span></div>
+      <div class="drink-item"><span class="drink-name">Iced Madagascar Latte</span><span class="drink-price">₺270</span></div>
+      <div class="drink-item"><span class="drink-name">Orange Espresso</span><span class="drink-price">₺265</span></div>
+      <div class="drink-item"><span class="drink-name">Tonic Espresso</span><span class="drink-price">₺265</span></div>
+      <div class="drink-item"><span class="drink-name">Lemon Espresso</span><span class="drink-price">₺265</span></div>
+      <div class="drink-item"><span class="drink-name">Cold Brew</span><span class="drink-price">₺250</span></div>
+      <div class="drink-item"><span class="drink-name">Iced Filtre</span><span class="drink-price">₺210</span></div>
+      <div class="drink-item"><span class="drink-name">Iced Chai Tea</span><span class="drink-price">₺250</span></div>
+    </div>
+  </div>
+
+  <div id="tab-matcha" class="tab-panel">
+    <div class="sec-head"><h2 class="sec-title">Matcha</h2><p class="sec-sub">Matcha</p><div class="sec-rule"></div></div>
+    <div class="cards">
+      <div class="drink-item"><span class="drink-name">Iced Matcha</span><span class="drink-price">₺280</span></div>
+      <div class="drink-item"><span class="drink-name">Iced Strawberry Matcha</span><span class="drink-price">₺300</span></div>
+      <div class="drink-item"><span class="drink-name">Sakura Matcha</span><span class="drink-price">₺320</span></div>
+      <div class="drink-item"><span class="drink-name">Blue Sky Matcha</span><span class="drink-price">₺320</span></div>
+      <div class="drink-item"><span class="drink-name">Iced Mango Matcha</span><span class="drink-price">₺300</span></div>
+      <div class="drink-item"><span class="drink-name">Minion Matcha</span><span class="drink-price">₺320</span></div>
+      <div class="drink-item"><span class="drink-name">Green Clean Matcha</span><span class="drink-price">₺320</span></div>
+      <div class="drink-item"><span class="drink-name">Red Light Matcha</span><span class="drink-price">₺320</span></div>
+    </div>
+  </div>
+
+  <div id="tab-bubble" class="tab-panel">
+    <div class="sec-head"><h2 class="sec-title">Bubble Teas</h2><p class="sec-sub">Boba / Kabarcık Çayı</p><div class="sec-rule"></div></div>
+    <div class="cards">
+      <div class="drink-item"><span class="drink-name">Zesty Brust</span><span class="drink-price">₺275</span></div>
+      <div class="drink-item"><span class="drink-name">Velvet Berry</span><span class="drink-price">₺275</span></div>
+      <div class="drink-item"><span class="drink-name">Aloha Pearl</span><span class="drink-price">₺275</span></div>
+      <div class="drink-item"><span class="drink-name">Choco Mania</span><span class="drink-price">₺275</span></div>
+      <div class="drink-item"><span class="drink-name">Salted Dream</span><span class="drink-price">₺275</span></div>
+      <div class="drink-item"><span class="drink-name">Berry Burst</span><span class="drink-price">₺275</span></div>
+    </div>
+  </div>
+
+  <div id="tab-mock" class="tab-panel">
+    <div class="sec-head"><h2 class="sec-title">House Mocktails</h2><p class="sec-sub">Özel İmza Mokteyleri</p><div class="sec-rule"></div></div>
+    <div class="cards">
+      <div class="drink-item"><span class="drink-name">Passion Breeze</span><span class="drink-price">₺270</span></div>
+      <div class="drink-item"><span class="drink-name">Ocean Breeze</span><span class="drink-price">₺270</span></div>
+      <div class="drink-item"><span class="drink-name">Kuzukulağı</span><span class="drink-price">₺270</span></div>
+      <div class="drink-item"><span class="drink-name">Chilli Passion</span><span class="drink-price">₺270</span></div>
+      <div class="drink-item"><span class="drink-name">Lucky Sip</span><span class="drink-price">₺270</span></div>
+      <div class="drink-item"><span class="drink-name">Akca Green Detox / Orange Detox</span><span class="drink-price">₺270</span></div>
+    </div>
+  </div>
+
+  <div id="tab-other" class="tab-panel">
+    <div class="sec-head"><h2 class="sec-title">Other Drinks</h2><p class="sec-sub">Diğer İçecekler</p><div class="sec-rule"></div></div>
+    <div class="cards">
+      <div class="drink-item"><span class="drink-name">Salep / Sahlep</span><span class="drink-price">₺210</span></div>
+      <div class="drink-item"><span class="drink-name">Hot Chocolate / Sıcak Çikolata</span><span class="drink-price">₺210</span></div>
+      <div class="drink-item"><span class="drink-name">Chai Tea Latte</span><span class="drink-price">₺210</span></div>
+      <div class="drink-item"><span class="drink-name">Turkish Coffee / Türk Kahvesi</span><span class="drink-price">₺150</span></div>
+      <div class="drink-item"><span class="drink-name">Double Turkish Coffee / Double</span><span class="drink-price">₺170</span></div>
+      <div class="drink-item"><span class="drink-name">Tea / Çay</span><span class="drink-price">₺80</span></div>
+      <div class="drink-item"><span class="drink-name">Double Tea / Çay Double</span><span class="drink-price">₺100</span></div>
+      <div class="drink-item"><span class="drink-name">Herbal Teas / Bitki Çayları</span><span class="drink-price">₺180</span></div>
+      <div class="drink-item"><span class="drink-name">Cola / Sprite / Fanta</span><span class="drink-price">₺90</span></div>
+    </div>
+  </div>
+
+  <div id="tab-mk" class="tab-panel">
+    <div class="sec-head"><h2 class="sec-title">Milkshakes</h2><p class="sec-sub">Milkshake</p><div class="sec-rule"></div></div>
+    <div class="mk-grid">
+      <div class="mk-item"><div class="mk-name">Chocolate</div><div class="mk-price">₺270</div></div>
+      <div class="mk-item"><div class="mk-name">Berry</div><div class="mk-price">₺270</div></div>
+      <div class="mk-item"><div class="mk-name">Mango</div><div class="mk-price">₺270</div></div>
+      <div class="mk-item"><div class="mk-name">Passion</div><div class="mk-price">₺270</div></div>
+      <div class="mk-item"><div class="mk-name">Green</div><div class="mk-price">₺270</div></div>
+    </div>
+  </div>
+
+  <footer class="pg-footer">AKÇA Kitchen &amp; Café · Fresh Daily · Brewed Perfectly</footer>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: DESSERT MENU
+══════════════════════════════════════════════════════════ -->
+<div id="page-dessert" class="page">
+  <div class="topbar">
+    <div class="brand-wrap">
+      <img class="logo" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+      <p class="tagline">Fresh Daily &bull; Brewed Perfectly</p>
+    </div>
+    <button class="back-btn" onclick="goBack()">Main Menu</button>
+  </div>
+  <header class="hero">
+    <h1 class="hero-title">Desserts</h1>
+    <p class="hero-sub">Tatlılar</p>
+    <div class="rule" aria-hidden="true"><span>🍁</span></div>
+  </header>
+  <div style="text-align:center;padding:60px 20px;">
+    <p style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:700;color:var(--charcoal);">Coming Soon</p>
+    <p style="color:var(--amber);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.2rem;margin-top:6px;">Yakında</p>
+    <p style="color:var(--soft);font-size:.88rem;margin-top:16px;line-height:1.6;">Dessert menu details are being prepared.<br>Please check back soon.</p>
+    <div class="cat-card" onclick="goBack()" style="max-width:300px;margin:28px auto 0;justify-content:center;">
+      <span style="color:var(--amber);font-size:1.4rem;">←</span>
+      <span class="cat-title" style="font-size:1.4rem;">Back to Menu</span>
+    </div>
+  </div>
+  <footer class="pg-footer">AKÇA Kitchen &amp; Café · Fresh Daily</footer>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: BUILD YOUR OWN PIZZA
+══════════════════════════════════════════════════════════ -->
+<div id="page-build-pizza" class="page builder-page" style="padding:0;">
+  <div class="page-inner" style="width:min(100%,940px);margin:0 auto;padding:max(24px,env(safe-area-inset-top)) 16px max(112px,calc(env(safe-area-inset-bottom)+96px));">
+    <button class="bback" onclick="go('pizza')">Pizzas</button>
+    <h1 class="bh1">Build Your Own Pizza</h1>
+    <div class="brule" aria-hidden="true"><span>🍁</span></div>
+    <p class="bintro">Customize your pizza with your choice of sauce, cheese, toppings and dressings.</p>
+
+    <div class="protein-row" id="pizza-protein-row">
+      <div class="choice" data-group="protein" data-value="Chicken" data-price="450" onclick="selectPizzaChoice(this)">Chicken <span class="cprice">₺450</span></div>
+      <div class="choice" data-group="protein" data-value="Salmon" data-price="500" onclick="selectPizzaChoice(this)">Salmon <span class="cprice">₺500</span></div>
+      <div class="choice" data-group="protein" data-value="Shrimp" data-price="500" onclick="selectPizzaChoice(this)">Shrimp <span class="cprice">₺500</span></div>
+    </div>
+
+    <div class="bsec"><h2>1. Base <span>(choose 1)</span></h2>
+      <div class="grid grid-2">
+        <div class="choice" data-group="pbase" data-value="Tomato Sauce" onclick="selectPizzaChoice(this)">Tomato Sauce</div>
+        <div class="choice" data-group="pbase" data-value="Pesto Sauce" onclick="selectPizzaChoice(this)">Pesto Sauce</div>
+      </div>
+    </div>
+
+    <div class="bsec"><h2>2. Cheese <span>(up to 2)</span></h2>
+      <div class="grid" id="pizza-cheese">
+        <div class="choice" data-group="cheese" data-value="Mozzarella" data-limit="2" onclick="selectPizzaMulti(this)">Mozzarella</div>
+        <div class="choice" data-group="cheese" data-value="Feta" data-limit="2" onclick="selectPizzaMulti(this)">Feta</div>
+        <div class="choice" data-group="cheese" data-value="Parmesan" data-limit="2" onclick="selectPizzaMulti(this)">Parmesan</div>
+      </div>
+    </div>
+
+    <div class="bsec"><h2>3. Toppings <span>(up to 6)</span></h2>
+      <div class="grid" id="pizza-toppings">
+        <div class="choice" data-group="toppings" data-value="Pepperoni" data-limit="6" onclick="selectPizzaMulti(this)">Pepperoni</div>
+        <div class="choice" data-group="toppings" data-value="Sausage" data-limit="6" onclick="selectPizzaMulti(this)">Sausage</div>
+        <div class="choice" data-group="toppings" data-value="Grilled Chicken" data-limit="6" onclick="selectPizzaMulti(this)">Grilled Chicken</div>
+        <div class="choice" data-group="toppings" data-value="Mushrooms" data-limit="6" onclick="selectPizzaMulti(this)">Mushrooms</div>
+        <div class="choice" data-group="toppings" data-value="Olives" data-limit="6" onclick="selectPizzaMulti(this)">Olives</div>
+        <div class="choice" data-group="toppings" data-value="Bell Peppers" data-limit="6" onclick="selectPizzaMulti(this)">Bell Peppers</div>
+        <div class="choice" data-group="toppings" data-value="Onions" data-limit="6" onclick="selectPizzaMulti(this)">Onions</div>
+        <div class="choice" data-group="toppings" data-value="Cherry Tomatoes" data-limit="6" onclick="selectPizzaMulti(this)">Cherry Tomatoes</div>
+        <div class="choice" data-group="toppings" data-value="Spinach" data-limit="6" onclick="selectPizzaMulti(this)">Spinach</div>
+        <div class="choice" data-group="toppings" data-value="Jalapeño" data-limit="6" onclick="selectPizzaMulti(this)">Jalapeño</div>
+        <div class="choice" data-group="toppings" data-value="Sweet Corn" data-limit="6" onclick="selectPizzaMulti(this)">Sweet Corn</div>
+        <div class="choice" data-group="toppings" data-value="Arugula" data-limit="6" onclick="selectPizzaMulti(this)">Arugula</div>
+        <div class="choice" data-group="toppings" data-value="Garlic" data-limit="6" onclick="selectPizzaMulti(this)">Garlic</div>
+      </div>
+    </div>
+
+    <div class="bsec"><h2>4. Dressings <span>(up to 2)</span></h2>
+      <div class="grid grid-2" id="pizza-dressings">
+        <div class="choice" data-group="dressings" data-value="Olive Oil" data-limit="2" onclick="selectPizzaMulti(this)">Olive Oil</div>
+        <div class="choice" data-group="dressings" data-value="Garlic Oil" data-limit="2" onclick="selectPizzaMulti(this)">Garlic Oil</div>
+        <div class="choice" data-group="dressings" data-value="Chili Oil" data-limit="2" onclick="selectPizzaMulti(this)">Chili Oil</div>
+        <div class="choice" data-group="dressings" data-value="BBQ Sauce" data-limit="2" onclick="selectPizzaMulti(this)">BBQ Sauce</div>
+      </div>
+    </div>
+
+    <div class="bprice-info" id="pizza-price-display">Select a protein to see price</div>
+    <button class="badd" onclick="reviewPizza()">Review Selection →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE: BUILD YOUR OWN BOWL
+══════════════════════════════════════════════════════════ -->
+<div id="page-build-bowl" class="page builder-page" style="padding:0;">
+  <div class="page-inner" style="width:min(100%,760px);margin:0 auto;padding:max(24px,env(safe-area-inset-top)) 16px max(112px,calc(env(safe-area-inset-bottom)+96px));">
+    <button class="bback" onclick="go('bowls')">Bowls</button>
+    <h1 class="bh1">Create Your Own Bowl</h1>
+    <div class="brule" aria-hidden="true"><span>🍁</span></div>
+    <p class="bintro">1 base · 1 protein · up to 4 toppings · 1 sauce</p>
+
+    <div class="bsec"><h2>Base</h2>
+      <div class="grid">
+        <div class="choice" data-group="bbase" data-value="Rice" onclick="selectBowlChoice(this)">Rice</div>
+        <div class="choice" data-group="bbase" data-value="Buckwheat" onclick="selectBowlChoice(this)">Buckwheat</div>
+        <div class="choice" data-group="bbase" data-value="Mixed Greens" onclick="selectBowlChoice(this)">Mixed Greens</div>
+      </div>
+    </div>
+
+    <div class="bsec"><h2>Protein</h2>
+      <div class="grid">
+        <div class="choice" data-group="bprotein" data-value="Chicken" data-price="475" onclick="selectBowlChoice(this)">Chicken<span class="cprice">₺475</span></div>
+        <div class="choice" data-group="bprotein" data-value="Shrimp" data-price="545" onclick="selectBowlChoice(this)">Shrimp<span class="cprice">₺545</span></div>
+        <div class="choice" data-group="bprotein" data-value="Smoked Salmon" data-price="545" onclick="selectBowlChoice(this)">Smoked Salmon<span class="cprice">₺545</span></div>
+      </div>
+    </div>
+
+    <div class="bsec"><h2>Toppings <span>(up to 4)</span></h2>
+      <div class="grid" id="bowl-toppings">
+        <div class="choice" data-group="btoppings" data-value="Avocado" data-limit="4" onclick="selectBowlMulti(this)">Avocado</div>
+        <div class="choice" data-group="btoppings" data-value="Cherry Tomato" data-limit="4" onclick="selectBowlMulti(this)">Cherry Tomato</div>
+        <div class="choice" data-group="btoppings" data-value="Cucumber" data-limit="4" onclick="selectBowlMulti(this)">Cucumber</div>
+        <div class="choice" data-group="btoppings" data-value="Broccoli" data-limit="4" onclick="selectBowlMulti(this)">Broccoli</div>
+        <div class="choice" data-group="btoppings" data-value="Sweet Corn" data-limit="4" onclick="selectBowlMulti(this)">Sweet Corn</div>
+        <div class="choice" data-group="btoppings" data-value="Chickpea" data-limit="4" onclick="selectBowlMulti(this)">Chickpea</div>
+        <div class="choice" data-group="btoppings" data-value="Mushroom" data-limit="4" onclick="selectBowlMulti(this)">Mushroom</div>
+        <div class="choice" data-group="btoppings" data-value="Boiled Egg" data-limit="4" onclick="selectBowlMulti(this)">Boiled Egg</div>
+        <div class="choice" data-group="btoppings" data-value="Parmesan" data-limit="4" onclick="selectBowlMulti(this)">Parmesan</div>
+      </div>
+    </div>
+
+    <div class="bsec"><h2>Sauce</h2>
+      <div class="grid grid-2">
+        <div class="choice" data-group="bsauce" data-value="AKÇA Special Sauce" onclick="selectBowlChoice(this)">AKÇA Special Sauce</div>
+        <div class="choice" data-group="bsauce" data-value="Caesar Sauce" onclick="selectBowlChoice(this)">Caesar Sauce</div>
+        <div class="choice" data-group="bsauce" data-value="Teriyaki Sauce" onclick="selectBowlChoice(this)">Teriyaki Sauce</div>
+        <div class="choice" data-group="bsauce" data-value="Peanut Chili Sauce" onclick="selectBowlChoice(this)">Peanut Chili Sauce</div>
+      </div>
+    </div>
+
+    <div class="bprice-info" id="bowl-price-display">Select a protein to see price</div>
+    <button class="badd" onclick="reviewBowl()">Review Selection →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SUMMARY OVERLAYS
+══════════════════════════════════════════════════════════ -->
+<div class="summary-overlay" id="pizza-summary">
+  <div class="summary-card">
+    <h2>Your Pizza</h2>
+    <div id="pizza-summary-content"></div>
+    <div class="summary-actions">
+      <button class="sum-btn sum-edit" onclick="closeSummary('pizza-summary')">Edit Selection</button>
+      <button class="sum-btn sum-clear" onclick="clearBuilder('pizza');closeSummary('pizza-summary')">Clear &amp; Start Again</button>
+      <button class="sum-btn sum-back" onclick="go('pizza');closeSummary('pizza-summary')">Back to Pizza Menu</button>
+    </div>
+  </div>
+</div>
+
+<div class="summary-overlay" id="bowl-summary">
+  <div class="summary-card">
+    <h2>Your Bowl</h2>
+    <div id="bowl-summary-content"></div>
+    <div class="summary-actions">
+      <button class="sum-btn sum-edit" onclick="closeSummary('bowl-summary')">Edit Selection</button>
+      <button class="sum-btn sum-clear" onclick="clearBuilder('bowl');closeSummary('bowl-summary')">Clear &amp; Start Again</button>
+      <button class="sum-btn sum-back" onclick="go('bowls');closeSummary('bowl-summary')">Back to Bowls Menu</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     JAVASCRIPT ROUTER + LOGIC
+══════════════════════════════════════════════════════════ -->
+<script>
+// ─── ROUTER ───────────────────────────────────────────────
+let currentPage = 'home';
+let langPref = 'en';
+
+function setLang(l){ langPref = l; }
+
+function go(pageId){
+  // Hide all pages
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+  });
+
+  const page = document.getElementById('page-' + pageId);
+  if(!page) return;
+
+  // Force reflow for animation restart
+  page.style.animation = 'none';
+  page.offsetHeight; // reflow
+  page.style.animation = '';
+
+  page.classList.add('active');
+  window.scrollTo({top:0, behavior:'instant'});
+
+  // Track history
+  history.pushState({page: pageId}, '', '#' + pageId);
+  currentPage = pageId;
+}
+
+function goBack(){
+  // Smart back navigation
+  const backMap = {
+    'bowls':'main-'+langPref, 'pizza':'main-'+langPref,
+    'drinks':'main-'+langPref, 'dessert':'main-'+langPref,
+    'build-pizza':'pizza', 'build-bowl':'bowls'
+  };
+  go(backMap[currentPage] || 'home');
+}
+
+window.addEventListener('popstate', e => {
+  const pageId = e.state?.page || location.hash.slice(1) || 'home';
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById('page-' + pageId);
+  if(page){ page.classList.add('active'); currentPage = pageId; }
+});
+
+// On load: restore from hash
+(function(){
+  const hash = location.hash.slice(1);
+  if(hash && document.getElementById('page-'+hash)){
+    go(hash);
+  }
+})();
+
+// ─── TABS ─────────────────────────────────────────────────
+function switchTab(btn, panelId){
+  // Find all tabs and panels in this tab group (same parent .tabs)
+  const tabsEl = btn.closest('.tabs');
+  const pageEl = tabsEl.closest('.page');
+
+  // Deactivate all tabs in this group
+  tabsEl.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Deactivate all panels in this page
+  pageEl.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('tab-' + panelId);
+  if(panel) panel.classList.add('active');
+}
+
+// ─── PIZZA BUILDER ────────────────────────────────────────
+function selectPizzaChoice(el){
+  // Radio: deselect same group, select this
+  const group = el.dataset.group;
+  document.querySelectorAll(`#page-build-pizza .choice[data-group="${group}"]`)
+    .forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  updatePizzaPrice();
+}
+
+function selectPizzaMulti(el){
+  const group = el.dataset.group;
+  const limit = parseInt(el.dataset.limit||99);
+  if(el.classList.contains('selected')){
+    el.classList.remove('selected');
+  } else {
+    const selected = document.querySelectorAll(`#page-build-pizza .choice[data-group="${group}"].selected`);
+    if(selected.length >= limit){
+      // Shake the element
+      el.style.animation='shake .3s ease';
+      setTimeout(()=>el.style.animation='',350);
+      return;
+    }
+    el.classList.add('selected');
+  }
+  updatePizzaPrice();
+}
+
+function updatePizzaPrice(){
+  const protein = document.querySelector('#page-build-pizza .choice[data-group="protein"].selected');
+  const display = document.getElementById('pizza-price-display');
+  if(protein){
+    display.textContent = `Total: ₺${protein.dataset.price} (${protein.dataset.value})`;
+  } else {
+    display.textContent = 'Select a protein to see price';
+  }
+}
+
+function getSelected(page, group){
+  return [...document.querySelectorAll(`#page-${page} .choice[data-group="${group}"].selected`)]
+    .map(c => c.dataset.value);
+}
+
+function reviewPizza(){
+  const protein = getSelected('build-pizza','protein');
+  const base = getSelected('build-pizza','pbase');
+  const cheese = getSelected('build-pizza','cheese');
+  const toppings = getSelected('build-pizza','toppings');
+  const dressings = getSelected('build-pizza','dressings');
+
+  if(!protein.length || !base.length){
+    const missing = [];
+    if(!protein.length) missing.push('a protein');
+    if(!base.length) missing.push('a base sauce');
+    alert('Please choose ' + missing.join(' and ') + '.');
+    return;
+  }
+
+  const priceEl = document.querySelector('#page-build-pizza .choice[data-group="protein"].selected');
+  const price = priceEl ? priceEl.dataset.price : '?';
+
+  document.getElementById('pizza-summary-content').innerHTML =
+    `<p><strong>Protein:</strong> ${protein[0]}</p>
+     <p><strong>Base:</strong> ${base[0]}</p>
+     <p><strong>Cheese:</strong> ${cheese.join(', ')||'None'}</p>
+     <p><strong>Toppings:</strong> ${toppings.join(', ')||'None'}</p>
+     <p><strong>Dressings:</strong> ${dressings.join(', ')||'None'}</p>
+     <p style="margin-top:14px;font-size:1.25rem;font-weight:700;color:#e8916a;"><strong>Total: ₺${price}</strong></p>`;
+
+  document.getElementById('pizza-summary').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// ─── BOWL BUILDER ─────────────────────────────────────────
+function selectBowlChoice(el){
+  const group = el.dataset.group;
+  document.querySelectorAll(`#page-build-bowl .choice[data-group="${group}"]`)
+    .forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  updateBowlPrice();
+}
+
+function selectBowlMulti(el){
+  const group = el.dataset.group;
+  const limit = parseInt(el.dataset.limit||99);
+  if(el.classList.contains('selected')){
+    el.classList.remove('selected');
+  } else {
+    const selected = document.querySelectorAll(`#page-build-bowl .choice[data-group="${group}"].selected`);
+    if(selected.length >= limit){
+      el.style.animation='shake .3s ease';
+      setTimeout(()=>el.style.animation='',350);
+      return;
+    }
+    el.classList.add('selected');
+  }
+}
+
+function updateBowlPrice(){
+  const protein = document.querySelector('#page-build-bowl .choice[data-group="bprotein"].selected');
+  const display = document.getElementById('bowl-price-display');
+  if(protein){
+    display.textContent = `Total: ₺${protein.dataset.price} (${protein.dataset.value})`;
+  } else {
+    display.textContent = 'Select a protein to see price';
+  }
+}
+
+function reviewBowl(){
+  const base = getSelected('build-bowl','bbase');
+  const protein = getSelected('build-bowl','bprotein');
+  const toppings = getSelected('build-bowl','btoppings');
+  const sauce = getSelected('build-bowl','bsauce');
+
+  if(!base.length || !protein.length || !sauce.length){
+    const missing = [];
+    if(!base.length) missing.push('a base');
+    if(!protein.length) missing.push('a protein');
+    if(!sauce.length) missing.push('a sauce');
+    alert('Please choose ' + missing.join(', ') + '.');
+    return;
+  }
+
+  const priceEl = document.querySelector('#page-build-bowl .choice[data-group="bprotein"].selected');
+  const price = priceEl ? priceEl.dataset.price : '?';
+
+  document.getElementById('bowl-summary-content').innerHTML =
+    `<p><strong>Base:</strong> ${base[0]}</p>
+     <p><strong>Protein:</strong> ${protein[0]}</p>
+     <p><strong>Toppings:</strong> ${toppings.join(', ')||'None'}</p>
+     <p><strong>Sauce:</strong> ${sauce[0]}</p>
+     <p style="margin-top:14px;font-size:1.25rem;font-weight:700;color:#e8916a;"><strong>Total: ₺${price}</strong></p>`;
+
+  document.getElementById('bowl-summary').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// ─── SUMMARY CONTROLS ────────────────────────────────────
+function closeSummary(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function clearBuilder(type){
+  const pageId = type === 'pizza' ? 'page-build-pizza' : 'page-build-bowl';
+  document.querySelectorAll(`#${pageId} .choice`).forEach(c => c.classList.remove('selected'));
+  if(type==='pizza') updatePizzaPrice();
+  if(type==='bowl') updateBowlPrice();
+}
+
+// ─── RIPPLE EFFECT ────────────────────────────────────────
+document.addEventListener('mousedown', e => {
+  const card = e.target.closest('.cat-card,.pizza-card,.item-card,.lang-card,.drink-item');
+  if(!card) return;
+  if(getComputedStyle(card).position === 'static') card.style.position = 'relative';
+  card.style.overflow = 'hidden';
+  const rect = card.getBoundingClientRect();
+  const r = document.createElement('span');
+  r.className = 'ripple-circle';
+  r.style.left = (e.clientX - rect.left) + 'px';
+  r.style.top = (e.clientY - rect.top) + 'px';
+  card.appendChild(r);
+  setTimeout(()=>r.remove(), 540);
+});
+
+// ─── SHAKE KEYFRAME ──────────────────────────────────────
+const style = document.createElement('style');
+style.textContent = '@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}';
+document.head.appendChild(style);
+</script>
 </body>
 </html>
