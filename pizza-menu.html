@@ -49,32 +49,33 @@
     @media(max-width:350px){.pizza-card{grid-template-columns:96px 1fr}.name{font-size:1.1rem}.desc,.desc-tr{font-size:.58rem}.price{font-size:.92rem}}
     @media(prefers-reduced-motion:reduce){body{animation:none}.pizza-card{transition:none}}
   </style>
+<link rel="stylesheet" href="./menu-components.css?v=shared-20260624">
 </head>
-<body>
-  <main class="page">
-    <div class="topbar">
-      <a data-main-link href="./main-menu-en.html" aria-label="Return to main menu"><img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café"></a>
-      <a class="home-link" data-main-link href="./main-menu-en.html">Main Menu</a>
+<body class="akca-menu-page">
+  <main class="page akca-page">
+    <div class="topbar akca-topbar">
+      <a data-main-link href="./main-menu-en.html" aria-label="Return to main menu"><img class="brand akca-logo" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café"></a>
+      <a class="home-link akca-back-link" data-main-link href="./main-menu-en.html">Main Menu</a>
     </div>
-    <header class="hero">
-      <p class="eyebrow">Pizza Menu · Pizza Menüsü</p>
+    <header class="hero akca-section-hero">
+      <p class="eyebrow akca-menu-label">Pizza Menu · Pizza Menüsü</p>
       <h1>Pizza Selection</h1>
-      <p class="sub">Pizza Seçenekleri</p>
-      <div class="rule" aria-hidden="true"><span>🍁</span></div>
+      <p class="sub akca-section-subtitle">Pizza Seçenekleri</p>
+      <div class="rule akca-section-rule" aria-hidden="true"><span>🍁</span></div>
     </header>
-    <section class="cards" aria-label="Pizza selections">
-      <article class="pizza-card"><img src="./pizza-margarita.jpg" alt="Margherita Pizza"><div class="body"><h2 class="name">Margherita Pizza</h2><p class="tr">Margarita Pizza</p><p class="desc">Tomato sauce, mozzarella, fresh basil, extra virgin olive oil.</p><p class="desc-tr">Domates sosu, mozzarella, taze fesleğen, sızma zeytinyağı.</p><p class="price">₺350</p></div></article>
-      <article class="pizza-card"><img src="./pizza-akca-special.jpg" alt="AKÇA Special"><div class="body"><h2 class="name">AKÇA Special</h2><p class="tr">AKÇA Özel Pizza</p><p class="desc">Tomato sauce, mozzarella, Turkish sucuk, black olives, mushrooms.</p><p class="desc-tr">Domates sosu, mozzarella, Türk sucuğu, siyah zeytin, mantar.</p><p class="price">₺450</p></div></article>
-      <article class="pizza-card"><img src="./pizza-veggie.jpg" alt="Veggie Pizza"><div class="body"><h2 class="name">Veggie Pizza</h2><p class="tr">Sebzeli Pizza</p><p class="desc">Tomato sauce, mozzarella, bell peppers, olives, onions, mushrooms, cherry tomatoes.</p><p class="desc-tr">Domates sosu, mozzarella, biberler, zeytin, soğan, mantar, cherry domates.</p><p class="price">₺400</p></div></article>
-      <article class="pizza-card"><img src="./pizza-mushroom.jpg" alt="Mushroom Pizza"><div class="body"><h2 class="name">Mushroom Pizza</h2><p class="tr">Mantarlı Pizza</p><p class="desc">Tomato sauce, mozzarella, mushrooms, garlic, oregano.</p><p class="desc-tr">Domates sosu, mozzarella, mantar, sarımsak, kekik.</p><p class="price">₺400</p></div></article>
-      <article class="pizza-card"><img src="./pizza-pepperoni.jpg" alt="Pepperoni Pizza"><div class="body"><h2 class="name">Pepperoni Pizza</h2><p class="tr">Pepperoni Pizza</p><p class="desc">Tomato sauce, mozzarella, pepperoni, oregano.</p><p class="desc-tr">Domates sosu, mozzarella, pepperoni, kekik.</p><p class="price">₺450</p></div></article>
-      <article class="pizza-card"><img src="./pizza-create-own.jpg" alt="Create Your Own Pizza"><div class="body"><h2 class="name">Create Your Own Pizza</h2><p class="tr">Kendi Pizzanı Oluştur</p><p class="desc">Choose your sauce, cheese &amp; toppings to create your perfect pizza.</p><p class="desc-tr">Sosunu, peynirini ve malzemelerini seç, kendi mükemmel pizzanı oluştur.</p><p class="price">Chicken ₺450 · Salmon ₺500 · Shrimp ₺500</p></div></article>
+    <section class="cards akca-card-list" aria-label="Pizza selections">
+      <article class="pizza-card akca-menu-card akca-menu-card--rect"><img class="akca-menu-image" src="./pizza-margarita.jpg" alt="Margherita Pizza"><div class="body akca-card-body"><h2 class="name akca-item-name">Margherita Pizza</h2><p class="tr akca-item-tr">Margarita Pizza</p><p class="desc akca-desc">Tomato sauce, mozzarella, fresh basil, extra virgin olive oil.</p><p class="desc-tr akca-desc-tr">Domates sosu, mozzarella, taze fesleğen, sızma zeytinyağı.</p><p class="price akca-price">₺350</p></div></article>
+      <article class="pizza-card akca-menu-card akca-menu-card--rect"><img class="akca-menu-image" src="./pizza-akca-special.jpg" alt="AKÇA Special"><div class="body akca-card-body"><h2 class="name akca-item-name">AKÇA Special</h2><p class="tr akca-item-tr">AKÇA Özel Pizza</p><p class="desc akca-desc">Tomato sauce, mozzarella, Turkish sucuk, black olives, mushrooms.</p><p class="desc-tr akca-desc-tr">Domates sosu, mozzarella, Türk sucuğu, siyah zeytin, mantar.</p><p class="price akca-price">₺450</p></div></article>
+      <article class="pizza-card akca-menu-card akca-menu-card--rect"><img class="akca-menu-image" src="./pizza-veggie.jpg" alt="Veggie Pizza"><div class="body akca-card-body"><h2 class="name akca-item-name">Veggie Pizza</h2><p class="tr akca-item-tr">Sebzeli Pizza</p><p class="desc akca-desc">Tomato sauce, mozzarella, bell peppers, olives, onions, mushrooms, cherry tomatoes.</p><p class="desc-tr akca-desc-tr">Domates sosu, mozzarella, biberler, zeytin, soğan, mantar, cherry domates.</p><p class="price akca-price">₺400</p></div></article>
+      <article class="pizza-card akca-menu-card akca-menu-card--rect"><img class="akca-menu-image" src="./pizza-mushroom.jpg" alt="Mushroom Pizza"><div class="body akca-card-body"><h2 class="name akca-item-name">Mushroom Pizza</h2><p class="tr akca-item-tr">Mantarlı Pizza</p><p class="desc akca-desc">Tomato sauce, mozzarella, mushrooms, garlic, oregano.</p><p class="desc-tr akca-desc-tr">Domates sosu, mozzarella, mantar, sarımsak, kekik.</p><p class="price akca-price">₺400</p></div></article>
+      <article class="pizza-card akca-menu-card akca-menu-card--rect"><img class="akca-menu-image" src="./pizza-pepperoni.jpg" alt="Pepperoni Pizza"><div class="body akca-card-body"><h2 class="name akca-item-name">Pepperoni Pizza</h2><p class="tr akca-item-tr">Pepperoni Pizza</p><p class="desc akca-desc">Tomato sauce, mozzarella, pepperoni, oregano.</p><p class="desc-tr akca-desc-tr">Domates sosu, mozzarella, pepperoni, kekik.</p><p class="price akca-price">₺450</p></div></article>
+      <article class="pizza-card akca-menu-card akca-menu-card--rect"><img class="akca-menu-image" src="./pizza-create-own.jpg" alt="Create Your Own Pizza"><div class="body akca-card-body"><h2 class="name akca-item-name">Create Your Own Pizza</h2><p class="tr akca-item-tr">Kendi Pizzanı Oluştur</p><p class="desc akca-desc">Choose your sauce, cheese &amp; toppings to create your perfect pizza.</p><p class="desc-tr akca-desc-tr">Sosunu, peynirini ve malzemelerini seç, kendi mükemmel pizzanı oluştur.</p><p class="price akca-price">Chicken ₺450 · Salmon ₺500 · Shrimp ₺500</p></div></article>
     </section>
-    <a class="build-card" data-builder-link href="./build-pizza-custom-en.html">
+    <a class="build-card akca-build-card" data-builder-link href="./build-pizza-custom-en.html">
       <h2>Build Your Own Pizza</h2>
       <p>Customize your pizza with your choice of sauce, cheese, toppings and dressings.</p>
-      <div class="build-prices" aria-label="Build your own pizza prices"><span>Chicken ₺450</span><span>Salmon ₺500</span><span>Shrimp ₺500</span></div>
-      <span class="build-button">Build Your Own →</span>
+      <div class="build-prices akca-build-prices" aria-label="Build your own pizza prices"><span>Chicken ₺450</span><span>Salmon ₺500</span><span>Shrimp ₺500</span></div>
+      <span class="build-button akca-build-button">Build Your Own →</span>
     </a>
     <footer class="footer">AKÇA Kitchen &amp; Café · Fresh Daily</footer>
   </main>
