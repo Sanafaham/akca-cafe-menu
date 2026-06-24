@@ -12,10 +12,10 @@
     :root{--amber:#c76d2a;--cream:#f5efe9;--charcoal:#1a1614;--soft:#8a7e76;--white:#fffdfb;}
     *{box-sizing:border-box;margin:0;padding:0;}
     html{background:var(--cream);scroll-behavior:smooth;}
-    body{min-height:100svh;color:var(--charcoal);font-family:"DM Sans",sans-serif;background:radial-gradient(circle at 50% -8%,rgba(199,109,42,.16),transparent 22rem),var(--cream);animation:pageFade 360ms ease-out both;}
+    body{min-height:100svh;color:var(--charcoal);font-family:"DM Sans",sans-serif;background:radial-gradient(circle at 50% -8%,rgba(199,109,42,.16),transparent 22rem),var(--cream);}
     .page{width:min(100%,765px);margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 14px max(100px,calc(env(safe-area-inset-bottom) + 88px));}
-    .topbar{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;margin:0 2px 10px;min-height:72px;}
-    .brand{width:min(52vw,230px);height:auto;display:block;margin:0 auto;}
+    .topbar{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;margin:0 2px 10px;min-height:82px;}
+    .brand{width:min(64vw,280px);height:auto;display:block;margin:0 auto;}
     .topbar .home-link{position:absolute;right:0;top:50%;transform:translateY(-50%);}
     .home-link{color:var(--charcoal);font-size:.68rem;font-weight:600;letter-spacing:.12em;text-decoration:none;text-transform:uppercase;}
     .home-link::before{content:"←";margin-right:7px;color:var(--amber);}
@@ -45,20 +45,31 @@
     .price{color:#9f4816;font-size:1.2rem;font-weight:800;margin-top:8px;}
     .footer{padding-top:20px;color:var(--soft);text-align:center;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;}
     @keyframes pageFade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-    @media(max-width:430px){.page{padding-inline:10px}.topbar{margin-bottom:6px;min-height:66px}.brand{width:min(48vw,185px)}.hero{margin-bottom:12px}.rule{margin:14px 0}.cards{gap:10px}.pizza-card{grid-template-columns:118px 1fr;gap:12px;min-height:122px;padding:8px;border-radius:14px}.pizza-card img{min-height:106px;border-radius:11px}.name{font-size:1.25rem}.tr{font-size:.88rem}.desc{font-size:.66rem;line-height:1.28;margin-top:4px}.desc-tr{font-size:.62rem}.price{font-size:1.02rem;margin-top:5px}.build-card{padding:21px 18px}.build-card h2{font-size:1.78rem}.build-prices{grid-template-columns:1fr;gap:7px}}
+    @media(max-width:430px){.page{padding-inline:10px}.topbar{margin-bottom:6px;min-height:72px}.brand{width:min(56vw,210px)}.hero{margin-bottom:12px}.rule{margin:14px 0}.cards{gap:10px}.pizza-card{grid-template-columns:118px 1fr;gap:12px;min-height:122px;padding:8px;border-radius:14px}.pizza-card img{min-height:106px;border-radius:11px}.name{font-size:1.25rem}.tr{font-size:.88rem}.desc{font-size:.66rem;line-height:1.28;margin-top:4px}.desc-tr{font-size:.62rem}.price{font-size:1.02rem;margin-top:5px}.build-card{padding:21px 18px}.build-card h2{font-size:1.78rem}.build-prices{grid-template-columns:1fr;gap:7px}}
     @media(max-width:350px){.pizza-card{grid-template-columns:96px 1fr}.name{font-size:1.1rem}.desc,.desc-tr{font-size:.58rem}.price{font-size:.92rem}}
     @media(prefers-reduced-motion:reduce){body{animation:none}.pizza-card{transition:none}}
   </style>
 <link rel="stylesheet" href="./menu-components.css?v=shared-20260624">
+<style>
+  .page-rule{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;color:#c76d2a;margin:0 14px 12px;}
+  .page-rule-line{height:1px;background:rgba(199,109,42,.32);display:block;}
+</style>
+<style>
+  
+  /* Hide embedded "FRESH DAILY" text from logo image — HTML tagline replaces it */
+  .brand, .akca-logo { clip-path: inset(0 0 24% 0); }
+
+  .brand-block{display:flex;flex-direction:column;align-items:center;}
+  .tagline{font-size:.82rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#c76d2a;margin-top:0px;text-align:center;line-height:1.4;}
+</style>
 </head>
 <body class="akca-menu-page">
   <main class="page akca-page">
     <div class="topbar akca-topbar">
-      <a data-main-link href="./main-menu-en.html" aria-label="Return to main menu"><img class="brand akca-logo" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café"></a>
+      <div class="brand-block"><a data-main-link href="./main-menu-en.html" aria-label="Return to main menu"><img class="brand akca-logo" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café"></a><p class="tagline">Fresh Daily &bull; Brewed Perfectly</p></div>
       <a class="home-link akca-back-link" data-main-link href="./main-menu-en.html">Main Menu</a>
     </div>
     <header class="hero akca-section-hero">
-      <p class="eyebrow akca-menu-label">Pizza Menu · Pizza Menüsü</p>
       <h1>Pizza Selection</h1>
       <p class="sub akca-section-subtitle">Pizza Seçenekleri</p>
       <div class="rule akca-section-rule" aria-hidden="true"><span>🍁</span></div>

@@ -19,7 +19,7 @@
     .intro{max-width:620px;margin:0 auto 30px;color:#f7f4f1;font-size:clamp(1.05rem,4.4vw,1.55rem);line-height:1.35;text-align:center}
     .protein{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:30px}.protein .choice{border-radius:0;border:0;border-right:1px solid var(--line);min-height:100px}.protein .choice:last-child{border-right:0}
     .section{margin:28px 0}.section h2{color:var(--amber);font-size:1.28rem;letter-spacing:.04em;text-transform:uppercase}.section h2 span{color:var(--muted);font-weight:400;margin-left:6px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
-    .choice{position:relative;min-height:58px;padding:13px 14px;display:flex;align-items:center;justify-content:center;gap:8px;color:#f9e6d0;background:var(--panel);border:1px solid var(--line);border-radius:12px;font-size:1.02rem;text-align:center;cursor:pointer;transition:.15s ease}
+    .choice{position:relative;min-height:82px;padding:13px 14px;display:flex;align-items:center;justify-content:center;gap:8px;color:#f9e6d0;background:var(--panel);border:1px solid var(--line);border-radius:12px;font-size:1.02rem;text-align:center;cursor:pointer;transition:.15s ease}
     .choice input{position:absolute;opacity:0}.choice:has(input:checked){border-color:var(--amber);box-shadow:0 0 0 1px rgba(217,103,36,.7),0 0 22px rgba(217,103,36,.22);color:#fff;background:rgba(217,103,36,.18)}
     .choice:active{transform:scale(.985)}.price{display:block;color:#fff;font-size:1.2rem;font-weight:700;margin-top:6px}
     .add,.summary-actions a,.summary-actions button{width:100%;min-height:70px;border:0;border-radius:10px;background:linear-gradient(180deg,#e36f2d,#c94f10);color:#fff;font:600 1.35rem "DM Sans",sans-serif;cursor:pointer;box-shadow:0 16px 34px rgba(217,103,36,.18)}
@@ -100,10 +100,7 @@
       showSummary();
     });
 
-    reviewButton.addEventListener('click', event => {
-      event.preventDefault();
-      showSummary();
-    });
+    // Navigation handled exclusively by form submit event below
 
     summaryPanel.addEventListener('click', event => {
       const action = event.target?.dataset?.action;

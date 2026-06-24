@@ -28,7 +28,7 @@
       background:
         radial-gradient(circle at 50% -8%, rgba(199, 109, 42, 0.18), transparent 20rem),
         var(--cream);
-      animation: pageFade 360ms ease-out both;
+      
     }
 
     .page {
@@ -46,12 +46,12 @@
       align-items: center;
       justify-content: center;
       gap: 14px;
-      margin: 0 4px 14px;
-      min-height: 58px;
+      margin: 0 2px 10px;
+      min-height: 82px;
     }
 
     .topbar .brand {
-      width: 124px;
+      width: min(64vw,280px);
       height: auto;
       display: block;
       margin: 0 auto;
@@ -64,7 +64,7 @@
       transform: translateY(-50%);
       color: var(--charcoal);
       font-size: 0.68rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.12em;
       text-decoration: none;
       text-transform: uppercase;
@@ -88,7 +88,7 @@
     }
 
     .brand {
-      width: min(72vw, 240px);
+      width: min(64vw, 280px);
       height: auto;
       display: block;
       margin: 0 auto 28px;
@@ -159,18 +159,30 @@
       body { animation: none; }
     }
   </style>
+<style>
+  .page-rule{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;color:#c76d2a;margin:0 14px 12px;}
+  .page-rule-line{height:1px;background:rgba(199,109,42,.32);display:block;}
+</style>
+<style>
+  
+  /* Hide embedded "FRESH DAILY" text from logo image — HTML tagline replaces it */
+  .brand, .akca-logo { clip-path: inset(0 0 24% 0); }
+
+  .brand-block{display:flex;flex-direction:column;align-items:center;}
+  .tagline{font-size:.82rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#c76d2a;margin-top:0px;text-align:center;line-height:1.4;}
+</style>
 </head>
 <body>
   <main class="page">
     <div class="topbar">
-      <a data-main-link href="./main-menu-en.html" aria-label="Return to main menu">
-        <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
-      </a>
+      <div class="brand-block"><a data-main-link href="./main-menu-en.html" aria-label="Return to main menu">
+          <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+        </a><p class="tagline">Fresh Daily &bull; Brewed Perfectly</p></div>
       <a class="home-link" data-main-link href="./main-menu-en.html">Main Menu</a>
     </div>
 
     <section class="card">
-      <img class="brand" src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+      <div class="page-rule" aria-hidden="true" style="margin:0 0 14px;"><span class="page-rule-line"></span><span>🍁</span><span class="page-rule-line"></span></div>
       <h1>Dessert Coming Soon</h1>
       <p class="tr" lang="tr">Tatlı menüsü yakında</p>
       <p class="note">Dessert details are being prepared. Please choose another menu category for now.</p>
