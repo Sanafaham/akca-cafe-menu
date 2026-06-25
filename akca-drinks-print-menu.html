@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AKÇA Kitchen &amp; Café — Drinks Menu (Print)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page{ size: A3 portrait; margin: 0; }
+:root{
+  --amber:#c76d2a; --amber-dark:#9f4816; --amber-light:#e8916a;
+  --cream:#f5efe9; --charcoal:#100d0c; --body:#241d19; --soft:#6f625b;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:#ddd6cd;}
+body{font-family:"DM Sans",sans-serif;color:var(--charcoal);display:flex;justify-content:center;}
+
+.sheet{
+  width:297mm;height:420mm;
+  background:var(--cream);
+  padding:14mm 16mm 10mm;
+  box-shadow:0 0 14mm rgba(0,0,0,.18);
+  margin:10mm 0;
+  display:flex;flex-direction:column;
+}
+
+.pm-header{text-align:center;margin-bottom:7mm;}
+.pm-header img{height:28mm;display:block;margin:0 auto;}
+.pm-tagline{font-size:3.1mm;font-weight:700;letter-spacing:.6mm;text-transform:uppercase;color:var(--amber);margin-top:2.5mm;}
+.pm-title{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:10mm;margin-top:3mm;color:var(--charcoal);}
+.pm-title-sub{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:4.4mm;color:var(--amber);margin-top:1mm;}
+.pm-deco{display:flex;align-items:center;justify-content:center;gap:3mm;margin-top:4mm;color:var(--amber);}
+.pm-deco::before,.pm-deco::after{content:"";width:26mm;height:.3mm;background:rgba(199,109,42,.4);}
+
+.dm-columns{column-count:3;column-gap:9mm;flex:1;}
+
+.dm-category{break-inside:avoid;margin-bottom:6mm;}
+.dm-cat-title{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:5.6mm;color:var(--charcoal);}
+.dm-cat-sub{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:3.3mm;color:var(--amber);margin-top:.2mm;}
+.dm-rule{height:.3mm;background:rgba(199,109,42,.3);margin:1.8mm 0 2.5mm;}
+
+.dm-row{display:flex;justify-content:space-between;align-items:baseline;gap:2mm;
+  font-size:3.5mm;padding:1.1mm 0;border-bottom:.2mm dotted rgba(16,13,12,.16);}
+.dm-row .name{color:var(--charcoal);}
+.dm-row .price{color:var(--amber-dark);font-weight:700;white-space:nowrap;}
+
+.pm-footer{margin-top:auto;text-align:center;font-size:2.6mm;letter-spacing:.3mm;color:var(--soft);text-transform:uppercase;padding-top:5mm;}
+
+@media print{
+  html,body{background:none;}
+  .sheet{box-shadow:none;margin:0;}
+}
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="pm-header">
+    <img src="./akca-logo.png" alt="AKÇA Kitchen &amp; Café">
+    <p class="pm-tagline">Fresh Daily &bull; Brewed Perfectly</p>
+    <h1 class="pm-title">Drinks Menu</h1>
+    <p class="pm-title-sub">İçecek Menüsü</p>
+    <div class="pm-deco">🍁</div>
+  </div>
+
+  <div class="dm-columns">
+
+    <div class="dm-category">
+      <h2 class="dm-cat-title">Hot Coffee</h2>
+      <p class="dm-cat-sub">Sıcak Kahve</p>
+      <div class="dm-rule"></div>
+      <div class="dm-row"><span class="name">Espresso</span><span class="price">₺140</span></div>
+      <div class="dm-row"><span class="name">Doppio</span><span class="price">₺150</span></div>
+      <div class="dm-row"><span class="name">Cortado</span><span class="price">₺210</span></div>
+      <div class="dm-row"><span class="name">Espresso Macchiato</span><span class="price">₺145</span></div>
+      <div class="dm-row"><span class="name">Espresso Macchiato Doppio</span><span class="price">₺155</span></div>
+      <div class="dm-row"><span class="name">Americano</span><span class="price">₺180</span></div>
+      <div class="dm-row"><span class="name">Latte</span><span class="price">₺200</span></div>
+      <div class="dm-row"><span class="name">Cappuccino</span><span class="price">₺200</span></div>
+      <div class="dm-row"><span class="name">Flat White</span><span class="price">₺225</span></div>
+      <div class="dm-row"><span class="name">Mocha / White Mocha</span><span class="price">₺245</span></div>
+      <div class="dm-row"><span class="name">Caramel Macchiato</span><span class="price">₺245</span></div>
+      <div class="dm-row"><span class="name">Madagascar Latte</span><span class="price">₺250</span></div>
+      <div class="dm-row"><span class="name">Affogato</span><span class="price">₺250</span></div>
+    </div>
+
+    <div class="dm-category">
+      <h2 class="dm-cat-title">Iced Coffee</h2>
+      <p class="dm-cat-sub">Soğuk Kahve</p>
+      <div class="dm-rule"></div>
+      <div class="dm-row"><span class="name">Iced Americano</span><span class="price">₺210</span></div>
+      <div class="dm-row"><span class="name">Iced Latte</span><span class="price">₺220</span></div>
+      <div class="dm-row"><span class="name">Iced Caramel Latte</span><span class="price">₺265</span></div>
+      <div class="dm-row"><span class="name">Iced White Mocha</span><span class="price">₺265</span></div>
+      <div class="dm-row"><span class="name">Iced Mocha</span><span class="price">₺265</span></div>
+      <div class="dm-row"><span class="name">Iced Madagascar Latte</span><span class="price">₺270</span></div>
+      <div class="dm-row"><span class="name">Orange Espresso</span><span class="price">₺265</span></div>
+      <div class="dm-row"><span class="name">Tonic Espresso</span><span class="price">₺265</span></div>
+      <div class="dm-row"><span class="name">Lemon Espresso</span><span class="price">₺265</span></div>
+      <div class="dm-row"><span class="name">Cold Brew</span><span class="price">₺250</span></div>
+      <div class="dm-row"><span class="name">Iced Filtre</span><span class="price">₺210</span></div>
+      <div class="dm-row"><span class="name">Iced Chai Tea</span><span class="price">₺250</span></div>
+    </div>
+
+    <div class="dm-category">
+      <h2 class="dm-cat-title">Matcha</h2>
+      <p class="dm-cat-sub">Matcha</p>
+      <div class="dm-rule"></div>
+      <div class="dm-row"><span class="name">Iced Matcha</span><span class="price">₺280</span></div>
+      <div class="dm-row"><span class="name">Iced Strawberry Matcha</span><span class="price">₺300</span></div>
+      <div class="dm-row"><span class="name">Sakura Matcha</span><span class="price">₺320</span></div>
+      <div class="dm-row"><span class="name">Blue Sky Matcha</span><span class="price">₺320</span></div>
+      <div class="dm-row"><span class="name">Iced Mango Matcha</span><span class="price">₺300</span></div>
+      <div class="dm-row"><span class="name">Minion Matcha</span><span class="price">₺320</span></div>
+      <div class="dm-row"><span class="name">Green Clean Matcha</span><span class="price">₺320</span></div>
+      <div class="dm-row"><span class="name">Red Light Matcha</span><span class="price">₺320</span></div>
+    </div>
+
+    <div class="dm-category">
+      <h2 class="dm-cat-title">Bubble Teas</h2>
+      <p class="dm-cat-sub">Boba / Kabarcık Çayı</p>
+      <div class="dm-rule"></div>
+      <div class="dm-row"><span class="name">Zesty Brust</span><span class="price">₺275</span></div>
+      <div class="dm-row"><span class="name">Velvet Berry</span><span class="price">₺275</span></div>
+      <div class="dm-row"><span class="name">Aloha Pearl</span><span class="price">₺275</span></div>
+      <div class="dm-row"><span class="name">Choco Mania</span><span class="price">₺275</span></div>
+      <div class="dm-row"><span class="name">Salted Dream</span><span class="price">₺275</span></div>
+      <div class="dm-row"><span class="name">Berry Burst</span><span class="price">₺275</span></div>
+    </div>
+
+    <div class="dm-category">
+      <h2 class="dm-cat-title">House Mocktails</h2>
+      <p class="dm-cat-sub">Özel İmza Mokteyleri</p>
+      <div class="dm-rule"></div>
+      <div class="dm-row"><span class="name">Passion Breeze</span><span class="price">₺270</span></div>
+      <div class="dm-row"><span class="name">Ocean Breeze</span><span class="price">₺270</span></div>
+      <div class="dm-row"><span class="name">Kuzukulağı</span><span class="price">₺270</span></div>
+      <div class="dm-row"><span class="name">Chilli Passion</span><span class="price">₺270</span></div>
+      <div class="dm-row"><span class="name">Lucky Sip</span><span class="price">₺270</span></div>
+      <div class="dm-row"><span class="name">Akca Green Detox / Orange Detox</span><span class="price">₺270</span></div>
+    </div>
+
+    <div class="dm-category">
+      <h2 class="dm-cat-title">Other Drinks</h2>
+      <p class="dm-cat-sub">Diğer İçecekler</p>
+      <div class="dm-rule"></div>
+      <div class="dm-row"><span class="name">Salep / Sahlep</span><span class="price">₺210</span></div>
+      <div class="dm-row"><span class="name">Hot Chocolate / Sıcak Çikolata</span><span class="price">₺210</span></div>
+      <div class="dm-row"><span class="name">Chai Tea Latte</span><span class="price">₺210</span></div>
+      <div class="dm-row"><span class="name">Turkish Coffee / Türk Kahvesi</span><span class="price">₺150</span></div>
+      <div class="dm-row"><span class="name">Double Turkish Coffee / Double</span><span class="price">₺170</span></div>
+      <div class="dm-row"><span class="name">Tea / Çay</span><span class="price">₺80</span></div>
+      <div class="dm-row"><span class="name">Double Tea / Çay Double</span><span class="price">₺100</span></div>
+      <div class="dm-row"><span class="name">Herbal Teas / Bitki Çayları</span><span class="price">₺180</span></div>
+      <div class="dm-row"><span class="name">Cola / Sprite / Fanta</span><span class="price">₺90</span></div>
+    </div>
+
+    <div class="dm-category">
+      <h2 class="dm-cat-title">Milkshakes</h2>
+      <p class="dm-cat-sub">Milkshake</p>
+      <div class="dm-rule"></div>
+      <div class="dm-row"><span class="name">Chocolate</span><span class="price">₺270</span></div>
+      <div class="dm-row"><span class="name">Berry</span><span class="price">₺270</span></div>
+      <div class="dm-row"><span class="name">Mango</span><span class="price">₺270</span></div>
+      <div class="dm-row"><span class="name">Passion</span><span class="price">₺270</span></div>
+      <div class="dm-row"><span class="name">Green</span><span class="price">₺270</span></div>
+    </div>
+
+  </div>
+
+  <p class="pm-footer">AKÇA Kitchen &amp; Café &middot; Fresh Daily &middot; Brewed Perfectly</p>
+
+</div>
+
+</body>
+</html>
