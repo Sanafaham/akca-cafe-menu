@@ -26,36 +26,51 @@ body{font-family:"DM Sans",sans-serif;color:var(--charcoal);display:flex;justify
   display:flex;flex-direction:column;
 }
 
-.pm-header{text-align:center;margin-bottom:7mm;}
+.pm-header{text-align:center;margin-bottom:5mm;}
 .pm-header img{height:28mm;display:block;margin:0 auto;clip-path:inset(0 0 24% 0);}
 .pm-tagline{font-size:3.1mm;font-weight:700;letter-spacing:.6mm;text-transform:uppercase;color:var(--amber);margin-top:2.5mm;}
 .pm-title{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:10mm;margin-top:3mm;color:var(--charcoal);}
 .pm-title-sub{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:4.4mm;color:var(--amber);margin-top:1mm;}
-.pm-deco{display:flex;align-items:center;justify-content:center;gap:3mm;margin-top:4mm;color:var(--amber);}
+.pm-deco{display:flex;align-items:center;justify-content:center;gap:3mm;margin-top:3mm;color:var(--amber);}
 .pm-deco::before,.pm-deco::after{content:"";width:26mm;height:.3mm;background:rgba(199,109,42,.4);}
 
-.pm-section{margin-bottom:6mm;}
+.pm-section{margin-bottom:4mm;}
 .pm-section-title{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:7.4mm;color:var(--charcoal);}
 .pm-section-sub{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:3.8mm;color:var(--amber);margin-top:.3mm;}
-.pm-section-rule{height:.3mm;background:rgba(199,109,42,.3);margin:2.5mm 0 4mm;}
+.pm-section-rule{height:.3mm;background:rgba(199,109,42,.3);margin:2mm 0 3mm;}
 
 .pm-subgroup-label{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:3.7mm;color:var(--amber-dark);margin:0 0 1.8mm;}
 
-.pm-grid{display:grid;gap:3mm;margin-bottom:3.5mm;}
+.pm-grid{display:grid;gap:3.4mm;margin-bottom:3mm;}
 .cols-3{grid-template-columns:repeat(3,1fr);}
 .cols-4{grid-template-columns:repeat(4,1fr);}
 
-.pm-card{display:flex;gap:2.6mm;align-items:flex-start;padding:2mm;background:var(--card-bg);border:.25mm solid var(--card-border);border-radius:3mm;break-inside:avoid;}
+.pm-card{display:flex;gap:2.6mm;align-items:flex-start;padding:2.2mm;background:var(--card-bg);border:.25mm solid var(--card-border);border-radius:3mm;break-inside:avoid;}
 .pm-card img{width:20mm;height:20mm;object-fit:cover;border-radius:2.2mm;flex-shrink:0;}
-.pm-body{flex:1;min-width:0;}
-.pm-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:1mm 1.5mm;}
-.pm-name{flex:1 1 auto;min-width:0;font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:3.9mm;line-height:1.08;color:var(--charcoal);}
-.pm-price{flex:0 0 auto;margin-left:auto;font-family:"DM Sans",sans-serif;font-weight:700;font-size:3.3mm;color:var(--amber-dark);white-space:nowrap;text-align:right;}
-.pm-tr{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:2.9mm;color:var(--amber);margin-top:.2mm;}
-.pm-desc{font-size:2.5mm;line-height:1.32;color:var(--body);margin-top:.9mm;}
-.pm-desc-tr{font-size:2.3mm;font-style:italic;line-height:1.28;color:var(--soft);margin-top:.4mm;}
 
-.pm-footer{margin-top:auto;text-align:center;font-size:2.6mm;letter-spacing:.3mm;color:var(--soft);text-transform:uppercase;padding-top:4mm;}
+/* Identical tiles: every item card within a grid shares one fixed height
+   so titles, descriptions and prices line up across that grid. Pizza cards
+   (3-col, wider) and Bowl cards (4-col, narrower) get their own calibrated
+   height since their column widths differ — each is internally uniform. */
+.pm-item{overflow:hidden;}
+.pm-item .pm-body{flex:1;min-width:0;height:100%;display:flex;flex-direction:column;}
+.cols-3 .pm-item{height:30mm;}
+.cols-4 .pm-item{height:48.5mm;}
+
+.pm-name-block{overflow:hidden;}
+.cols-3 .pm-name-block{height:8.5mm;}
+.cols-4 .pm-name-block{height:12.2mm;}
+.pm-name{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:3.9mm;line-height:1.08;color:var(--charcoal);}
+.pm-tr{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:2.9mm;color:var(--amber);margin-top:.3mm;line-height:1.2;}
+
+.pm-desc-wrap{flex:1 1 auto;min-width:0;overflow:hidden;margin-top:.9mm;}
+.pm-desc{font-size:2.5mm;line-height:1.3;color:var(--body);}
+.pm-desc-tr{font-size:2.3mm;font-style:italic;line-height:1.26;color:var(--soft);margin-top:.4mm;}
+
+.pm-price-row{margin-top:auto;display:flex;justify-content:flex-end;padding-top:1mm;flex-shrink:0;}
+.pm-price{font-family:"DM Sans",sans-serif;font-weight:700;font-size:3.3mm;color:var(--amber-dark);white-space:nowrap;text-align:right;}
+
+.pm-footer{margin-top:auto;text-align:center;font-size:2.6mm;letter-spacing:.3mm;color:var(--soft);text-transform:uppercase;padding-top:3mm;}
 
 @media print{
   html,body{background:none;}
@@ -82,58 +97,70 @@ body{font-family:"DM Sans",sans-serif;color:var(--charcoal);display:flex;justify
     <div class="pm-section-rule"></div>
 
     <div class="pm-grid cols-3">
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./pizza-margarita.jpg" alt="Margherita Pizza">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Margherita Pizza</span><span class="pm-price">₺350</span></div>
-          <p class="pm-tr">Margarita Pizza</p>
-          <p class="pm-desc">Tomato sauce, mozzarella, fresh basil, extra virgin olive oil.</p>
-          <p class="pm-desc-tr">Domates sosu, mozzarella, taze fesleğen, sızma zeytinyağı.</p>
+                    <div class="pm-name-block"><span class="pm-name">Margherita Pizza</span><span class="pm-tr">Margarita Pizza</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Tomato sauce, mozzarella, fresh basil, extra virgin olive oil.</p>
+            <p class="pm-desc-tr">Domates sosu, mozzarella, taze fesleğen, sızma zeytinyağı.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺350</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./pizza-akca-special.jpg" alt="AKÇA Special">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">AKÇA Special</span><span class="pm-price">₺450</span></div>
-          <p class="pm-tr">AKÇA Özel Pizza</p>
-          <p class="pm-desc">Tomato sauce, mozzarella, Turkish sucuk, black olives, mushrooms.</p>
-          <p class="pm-desc-tr">Domates sosu, mozzarella, Türk sucuğu, siyah zeytin, mantar.</p>
+                    <div class="pm-name-block"><span class="pm-name">AKÇA Special</span><span class="pm-tr">AKÇA Özel Pizza</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Tomato sauce, mozzarella, Turkish sucuk, black olives, mushrooms.</p>
+            <p class="pm-desc-tr">Domates sosu, mozzarella, Türk sucuğu, siyah zeytin, mantar.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺450</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./pizza-veggie.jpg" alt="Veggie Pizza">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Veggie Pizza</span><span class="pm-price">₺400</span></div>
-          <p class="pm-tr">Sebzeli Pizza</p>
-          <p class="pm-desc">Tomato sauce, mozzarella, bell peppers, olives, onions, mushrooms, cherry tomatoes.</p>
-          <p class="pm-desc-tr">Domates sosu, mozzarella, biberler, zeytin, soğan, mantar, cherry domates.</p>
+                    <div class="pm-name-block"><span class="pm-name">Veggie Pizza</span><span class="pm-tr">Sebzeli Pizza</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Tomato sauce, mozzarella, bell peppers, olives, onions, mushrooms, cherry tomatoes.</p>
+            <p class="pm-desc-tr">Domates sosu, mozzarella, biberler, zeytin, soğan, mantar, cherry domates.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺400</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./pizza-mushroom.jpg" alt="Mushroom Pizza">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Mushroom Pizza</span><span class="pm-price">₺400</span></div>
-          <p class="pm-tr">Mantarlı Pizza</p>
-          <p class="pm-desc">Tomato sauce, mozzarella, mushrooms, garlic, oregano.</p>
-          <p class="pm-desc-tr">Domates sosu, mozzarella, mantar, sarımsak, kekik.</p>
+                    <div class="pm-name-block"><span class="pm-name">Mushroom Pizza</span><span class="pm-tr">Mantarlı Pizza</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Tomato sauce, mozzarella, mushrooms, garlic, oregano.</p>
+            <p class="pm-desc-tr">Domates sosu, mozzarella, mantar, sarımsak, kekik.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺400</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./pizza-pepperoni.jpg" alt="Pepperoni Pizza">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Pepperoni Pizza</span><span class="pm-price">₺450</span></div>
-          <p class="pm-tr">Pepperoni Pizza</p>
-          <p class="pm-desc">Tomato sauce, mozzarella, pepperoni, oregano.</p>
-          <p class="pm-desc-tr">Domates sosu, mozzarella, pepperoni, kekik.</p>
+                    <div class="pm-name-block"><span class="pm-name">Pepperoni Pizza</span><span class="pm-tr">Pepperoni Pizza</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Tomato sauce, mozzarella, pepperoni, oregano.</p>
+            <p class="pm-desc-tr">Domates sosu, mozzarella, pepperoni, kekik.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺450</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./pizza-create-own.jpg" alt="Create Your Own Pizza">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Create Your Own Pizza</span><span class="pm-price">Chicken ₺450 · Salmon ₺500 · Shrimp ₺500</span></div>
-          <p class="pm-tr">Kendi Pizzanı Oluştur</p>
-          <p class="pm-desc">Choose your sauce, cheese and toppings to create your perfect pizza.</p>
-          <p class="pm-desc-tr">Sosunu, peynirini ve malzemelerini seç, kendi mükemmel pizzanı oluştur.</p>
+                    <div class="pm-name-block"><span class="pm-name">Create Your Own Pizza</span><span class="pm-tr">Kendi Pizzanı Oluştur</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Choose your sauce, cheese and toppings to create your perfect pizza.</p>
+            <p class="pm-desc-tr">Sosunu, peynirini ve malzemelerini seç, kendi mükemmel pizzanı oluştur.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">Chicken ₺450 · Salmon ₺500 · Shrimp ₺500</span></div>
         </div>
       </div>
     </div>
@@ -147,120 +174,144 @@ body{font-family:"DM Sans",sans-serif;color:var(--charcoal);display:flex;justify
 
     <p class="pm-subgroup-label">Signature Bowls &middot; İmza Kaseler</p>
     <div class="pm-grid cols-4">
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./bowl-chicken.jpg" alt="Chicken Bowl">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Chicken Bowl</span><span class="pm-price">₺475</span></div>
-          <p class="pm-tr">Tavuk Kase</p>
-          <p class="pm-desc">Grilled chicken, rice, mixed greens, avocado, cherry tomato, cucumber, AKÇA dressing.</p>
-          <p class="pm-desc-tr">Izgara tavuk, pirinç, karışık yeşillikler, avokado, cherry domates, salatalık, AKÇA sos.</p>
+                    <div class="pm-name-block"><span class="pm-name">Chicken Bowl</span><span class="pm-tr">Tavuk Kase</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Grilled chicken, rice, mixed greens, avocado, cherry tomato, cucumber, AKÇA dressing.</p>
+            <p class="pm-desc-tr">Izgara tavuk, pirinç, karışık yeşillikler, avokado, cherry domates, salatalık, AKÇA sos.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺475</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./bowl-harvest-chicken.jpg" alt="Harvest Chicken Bowl">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Harvest Chicken Bowl</span><span class="pm-price">₺475</span></div>
-          <p class="pm-tr">Hasat Tavuk Kase</p>
-          <p class="pm-desc">Chicken, chickpeas, sweet corn, mushroom, caramelized onion, boiled egg, cucumber, cherry tomato, greens, AKÇA dressing.</p>
-          <p class="pm-desc-tr">Tavuk, nohut, tatlı mısır, mantar, karamelize soğan, yumurta, salatalık, cherry domates, yeşillikler, AKÇA sos.</p>
+                    <div class="pm-name-block"><span class="pm-name">Harvest Chicken Bowl</span><span class="pm-tr">Hasat Tavuk Kase</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Chicken, chickpeas, sweet corn, mushroom, caramelized onion, boiled egg, cucumber, cherry tomato, greens, AKÇA dressing.</p>
+            <p class="pm-desc-tr">Tavuk, nohut, tatlı mısır, mantar, karamelize soğan, yumurta, salatalık, cherry domates, yeşillikler, AKÇA sos.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺475</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./bowl-shrimp.jpg" alt="Shrimp Bowl">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Shrimp Bowl</span><span class="pm-price">₺545</span></div>
-          <p class="pm-tr">Karides Kase</p>
-          <p class="pm-desc">Grilled shrimp, rice, mixed greens, avocado, cherry tomato, cucumber, AKÇA dressing.</p>
-          <p class="pm-desc-tr">Izgara karides, pirinç, karışık yeşillikler, avokado, cherry domates, salatalık, AKÇA sos.</p>
+                    <div class="pm-name-block"><span class="pm-name">Shrimp Bowl</span><span class="pm-tr">Karides Kase</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Grilled shrimp, rice, mixed greens, avocado, cherry tomato, cucumber, AKÇA dressing.</p>
+            <p class="pm-desc-tr">Izgara karides, pirinç, karışık yeşillikler, avokado, cherry domates, salatalık, AKÇA sos.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺545</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./bowl-smoked-salmon.jpg" alt="Smoked Salmon Bowl">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Smoked Salmon Bowl</span><span class="pm-price">₺545</span></div>
-          <p class="pm-tr">Füme Somon Kase</p>
-          <p class="pm-desc">Premium smoked salmon, rice, mixed greens, avocado, cherry tomato, cucumber, carrot, AKÇA dressing.</p>
-          <p class="pm-desc-tr">Premium füme somon, pirinç, yeşillikler, avokado, cherry domates, salatalık, havuç, AKÇA sos.</p>
+                    <div class="pm-name-block"><span class="pm-name">Smoked Salmon Bowl</span><span class="pm-tr">Füme Somon Kase</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Premium smoked salmon, rice, mixed greens, avocado, cherry tomato, cucumber, carrot, AKÇA dressing.</p>
+            <p class="pm-desc-tr">Premium füme somon, pirinç, yeşillikler, avokado, cherry domates, salatalık, havuç, AKÇA sos.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺545</span></div>
         </div>
       </div>
     </div>
 
     <p class="pm-subgroup-label">Chicken Collection &middot; Tavuk Koleksiyonu</p>
     <div class="pm-grid cols-4">
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./bowl-teriyaki.jpg" alt="Teriyaki Chicken Bowl">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Teriyaki Chicken Bowl</span><span class="pm-price">₺475</span></div>
-          <p class="pm-tr">Teriyaki Tavuk Kase</p>
-          <p class="pm-desc">Chicken, rice, mixed greens, avocado, cherry tomato, cucumber, teriyaki sauce.</p>
-          <p class="pm-desc-tr">Tavuk, pirinç, yeşillikler, avokado, cherry domates, salatalık, teriyaki sos.</p>
+                    <div class="pm-name-block"><span class="pm-name">Teriyaki Chicken Bowl</span><span class="pm-tr">Teriyaki Tavuk Kase</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Chicken, rice, mixed greens, avocado, cherry tomato, cucumber, teriyaki sauce.</p>
+            <p class="pm-desc-tr">Tavuk, pirinç, yeşillikler, avokado, cherry domates, salatalık, teriyaki sos.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺475</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./bowl-sweet-chili.jpg" alt="Sweet Chili Chicken Bowl">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Sweet Chili Chicken Bowl</span><span class="pm-price">₺475</span></div>
-          <p class="pm-tr">Tatlı Acı Tavuk Kase</p>
-          <p class="pm-desc">Chicken, rice, mixed greens, avocado, cherry tomato, cucumber, sweet chili sauce.</p>
-          <p class="pm-desc-tr">Tavuk, pirinç, yeşillikler, avokado, cherry domates, salatalık, sweet chili sos.</p>
+                    <div class="pm-name-block"><span class="pm-name">Sweet Chili Chicken Bowl</span><span class="pm-tr">Tatlı Acı Tavuk Kase</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Chicken, rice, mixed greens, avocado, cherry tomato, cucumber, sweet chili sauce.</p>
+            <p class="pm-desc-tr">Tavuk, pirinç, yeşillikler, avokado, cherry domates, salatalık, sweet chili sos.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺475</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./bowl-buckwheat.jpg" alt="Buckwheat Chicken Bowl">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Buckwheat Chicken Bowl</span><span class="pm-price">₺475</span></div>
-          <p class="pm-tr">Karabuğday Tavuk Kase</p>
-          <p class="pm-desc">Chicken, buckwheat, mixed greens, avocado, cherry tomato, cucumber, AKÇA dressing.</p>
-          <p class="pm-desc-tr">Tavuk, karabuğday, yeşillikler, avokado, cherry domates, salatalık, AKÇA sos.</p>
+                    <div class="pm-name-block"><span class="pm-name">Buckwheat Chicken Bowl</span><span class="pm-tr">Karabuğday Tavuk Kase</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Chicken, buckwheat, mixed greens, avocado, cherry tomato, cucumber, AKÇA dressing.</p>
+            <p class="pm-desc-tr">Tavuk, karabuğday, yeşillikler, avokado, cherry domates, salatalık, AKÇA sos.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺475</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./bowl-power-chicken.jpg" alt="Power Chicken Bowl">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Power Chicken Bowl</span><span class="pm-price">₺475</span></div>
-          <p class="pm-tr">Güç Tavuk Kase</p>
-          <p class="pm-desc">Chicken, boiled egg, broccoli, mixed greens, cucumber, cherry tomato, AKÇA dressing.</p>
-          <p class="pm-desc-tr">Tavuk, haşlanmış yumurta, brokoli, yeşillikler, salatalık, cherry domates, AKÇA sos.</p>
+                    <div class="pm-name-block"><span class="pm-name">Power Chicken Bowl</span><span class="pm-tr">Güç Tavuk Kase</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Chicken, boiled egg, broccoli, mixed greens, cucumber, cherry tomato, AKÇA dressing.</p>
+            <p class="pm-desc-tr">Tavuk, haşlanmış yumurta, brokoli, yeşillikler, salatalık, cherry domates, AKÇA sos.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺475</span></div>
         </div>
       </div>
     </div>
 
     <p class="pm-subgroup-label">Salads &middot; Superfood &middot; Custom &mdash; Salatalar &middot; Süper Gıda &middot; Özel</p>
     <div class="pm-grid cols-4">
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./bowl-caesar.jpg" alt="Caesar Salad Bowl">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Caesar Salad Bowl</span><span class="pm-price">₺475–495</span></div>
-          <p class="pm-tr">Sezar Salata Kase</p>
-          <p class="pm-desc">Romaine lettuce, cherry tomato, croutons, shaved Parmesan, Caesar dressing.</p>
-          <p class="pm-desc-tr">Romaine marul, cherry domates, kruton, parmesan, Sezar sos.</p>
+                    <div class="pm-name-block"><span class="pm-name">Caesar Salad Bowl</span><span class="pm-tr">Sezar Salata Kase</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Romaine lettuce, cherry tomato, croutons, shaved Parmesan, Caesar dressing.</p>
+            <p class="pm-desc-tr">Romaine marul, cherry domates, kruton, parmesan, Sezar sos.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺475–495</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./bowl-acai.jpg" alt="Açaí Bowl">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Açaí Bowl</span><span class="pm-price">₺395</span></div>
-          <p class="pm-tr">Açaí Kase</p>
-          <p class="pm-desc">Açaí, banana, strawberry, blueberry, toasted almonds, chocolate granola.</p>
-          <p class="pm-desc-tr">Açaí, muz, çilek, yaban mersini, badem, çikolatalı granola.</p>
+                    <div class="pm-name-block"><span class="pm-name">Açaí Bowl</span><span class="pm-tr">Açaí Kase</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Açaí, banana, strawberry, blueberry, toasted almonds, chocolate granola.</p>
+            <p class="pm-desc-tr">Açaí, muz, çilek, yaban mersini, badem, çikolatalı granola.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺395</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./bowl-granola.jpg" alt="Granola Bowl">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Granola Bowl</span><span class="pm-price">₺395</span></div>
-          <p class="pm-tr">Granola Kase</p>
-          <p class="pm-desc">Crunchy chocolate granola, fresh strawberries, blueberries, rich chocolate drizzle.</p>
-          <p class="pm-desc-tr">Çıtır çikolatalı granola, taze çilek, yaban mersini, yoğun çikolata sosu.</p>
+                    <div class="pm-name-block"><span class="pm-name">Granola Bowl</span><span class="pm-tr">Granola Kase</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Crunchy chocolate granola, fresh strawberries, blueberries, rich chocolate drizzle.</p>
+            <p class="pm-desc-tr">Çıtır çikolatalı granola, taze çilek, yaban mersini, yoğun çikolata sosu.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺395</span></div>
         </div>
       </div>
-      <div class="pm-card">
+      <div class="pm-card pm-item">
         <img src="./bowl-custom.jpg" alt="Create Your Own Bowl">
         <div class="pm-body">
-          <div class="pm-top"><span class="pm-name">Create Your Own Bowl</span><span class="pm-price">₺475–₺545</span></div>
-          <p class="pm-tr">Kendi Kaseni Oluştur</p>
-          <p class="pm-desc">Choose your base, protein, toppings and dressing.</p>
-          <p class="pm-desc-tr">Taban, protein, garnitür ve sos seçimini kendin yap.</p>
+                    <div class="pm-name-block"><span class="pm-name">Create Your Own Bowl</span><span class="pm-tr">Kendi Kaseni Oluştur</span></div>
+          <div class="pm-desc-wrap">
+            <p class="pm-desc">Choose your base, protein, toppings and dressing.</p>
+            <p class="pm-desc-tr">Taban, protein, garnitür ve sos seçimini kendin yap.</p>
+          </div>
+          <div class="pm-price-row"><span class="pm-price">₺475–₺545</span></div>
         </div>
       </div>
     </div>
