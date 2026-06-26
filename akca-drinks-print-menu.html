@@ -33,9 +33,12 @@ body{font-family:"DM Sans",sans-serif;color:var(--charcoal);display:flex;justify
 .pm-deco{display:flex;align-items:center;justify-content:center;gap:3mm;margin-top:4mm;color:var(--amber);}
 .pm-deco::before,.pm-deco::after{content:"";width:26mm;height:.3mm;background:rgba(199,109,42,.4);}
 
-/* True grid placement (not independent flex columns) so every category
-   heading in the same row starts at the exact same Y position. */
-.dm-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:8mm;flex:1;align-content:start;}
+/* Deliberately composed page: two fixed rows of three categories, with
+   Milkshakes placed as its own centered closing block — not auto-flowed. */
+.dm-columns{display:flex;flex-direction:column;gap:8mm;flex:1;}
+.dm-row-pair{display:grid;grid-template-columns:repeat(3,1fr);gap:8mm;}
+.dm-milkshake-wrap{display:flex;justify-content:center;}
+.dm-milkshake-wrap .dm-category{width:calc((100% - 16mm) / 3);}
 
 .dm-category{break-inside:avoid;}
 .dm-cat-title{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:5.6mm;color:var(--charcoal);}
@@ -68,6 +71,8 @@ body{font-family:"DM Sans",sans-serif;color:var(--charcoal);display:flex;justify
   </div>
 
   <div class="dm-columns">
+
+  <div class="dm-row-pair">
 
     <div class="dm-category">
       <h2 class="dm-cat-title">Hot Coffee</h2>
@@ -118,6 +123,10 @@ body{font-family:"DM Sans",sans-serif;color:var(--charcoal);display:flex;justify
       <div class="dm-row"><span class="name">Berry Burst</span><span class="price">₺275</span></div>
     </div>
 
+  </div>
+
+  <div class="dm-row-pair">
+
     <div class="dm-category">
       <h2 class="dm-cat-title">Matcha</h2>
       <p class="dm-cat-sub">Matcha</p>
@@ -159,6 +168,9 @@ body{font-family:"DM Sans",sans-serif;color:var(--charcoal);display:flex;justify
       <div class="dm-row"><span class="name">Akca Green Detox / Orange Detox</span><span class="price">₺270</span></div>
     </div>
 
+  </div>
+
+  <div class="dm-milkshake-wrap">
     <div class="dm-category">
       <h2 class="dm-cat-title">Milkshakes</h2>
       <p class="dm-cat-sub">Milkshake</p>
@@ -169,6 +181,7 @@ body{font-family:"DM Sans",sans-serif;color:var(--charcoal);display:flex;justify
       <div class="dm-row"><span class="name">Passion</span><span class="price">₺270</span></div>
       <div class="dm-row"><span class="name">Green</span><span class="price">₺270</span></div>
     </div>
+  </div>
 
   </div>
 
